@@ -435,6 +435,8 @@ class App extends Component {
         izmenenieKParrent={this.izmenenieKParrent}
         />
 
+        {console.log(this.state.kursibanki)}
+
         <button onClick={this.poluchenieDannih}>
           Get!
         </button>
