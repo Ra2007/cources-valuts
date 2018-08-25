@@ -4,31 +4,28 @@ import './listValut.css';
 class ListValut extends Component {
 
     handleFilterChage = (e) => {
-        this.props.izmstst();
+        const valact11 = e.currentTarget.dataset.value;
         this.props.handleActivPrice(Object.values(e.currentTarget)[1].data);
-        this.props.handleSetKolvo(Object.values(e.currentTarget)[1].children[0].props.value);
+        this.props.handleSetKolvo(document.getElementById(valact11).value);
+        
         this.props.onFilterChanged(e.currentTarget.dataset.value);
+        this.props.izmstst();
     }
 
-    handleCheckBox = (e) => {
-        ;
-        this.props.handleStatus(e.currentTarget.dataset.value)
-    }
+    
 
     handleSetKolvo1 = (e) => {
-
         this.props.handleSetKolvo(e.currentTarget.value)
     }
 
     izmenenieKP = (e) => {
-        const valact = e.currentTarget.dataset.value
-
+        const valact = e.currentTarget.dataset.value;
         this.props.handleSetKolvo(document.getElementById(valact).value)
         this.props.izmenenieKParrent((e.currentTarget.className));
     }
 
     zaglushka = () => {
-        console.log()
+        console.log('zaglushka')
     }
 
 
@@ -40,7 +37,8 @@ class ListValut extends Component {
 
             <p>{item.name}<br />{item.price}<br />{item.kodpara}</p>
             <div className={item.kodpara.split('_')[2] === 'buy' ? 'switch-btn switch-on' : 'switch-btn'}
-                onClick={this.izmenenieKP} data-value={item.kodval}> {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ(buy)' : 'ПРОДАТЬ(sell)'}
+                 onClick={this.izmenenieKP} 
+                data-value={item.kodval}> {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ(buy)' : 'ПРОДАТЬ(sell)'}
             </div>
         </div>
         )
@@ -228,13 +226,14 @@ class ListValut extends Component {
 
     render() {
         return (
-            <div className="conteiner">
+            <div className="contValuta">
                 <div className="row">
                     {this.props.kursibanki.map((item) => {
                         if (item.name !== '') {
-                            if (this.props.filter === item.kodval) {
-                                if (this.props.buystatus === item.kodpara.split('_')[2]) { return (this.vivodpari(item)) }
+                            if (this.props.filter === item.kodval && this.props.buystatus === item.kodpara.split('_')[2]) { 
+                                return (this.vivodpari(item))
                             }
+                            
                             if (this.props.filter !== item.kodval && this.props.buystatus !== item.kodpara.split('_')[2]) {
                                 return (this.vivodpari(item))
                             }

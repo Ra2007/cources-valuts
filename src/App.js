@@ -29,21 +29,7 @@ class App extends Component {
     })
   }
 
-  handleStatus = (valutaId) => {
-    const newKursList = [...this.state.valuta];
-    newKursList.forEach((v) => {
-      if (v.id === valutaId) {
-        v.status = !v.status;
-      } else {
-        v.status = false;
-      }
-    })
-    this.setState({
-      valuta: newKursList
-    });
-  }
-
-  handleSetKolvo = (kl) => {
+ handleSetKolvo = (kl) => {
     this.setState({
       kolichestvoValuti: kl
     })
@@ -99,12 +85,9 @@ class App extends Component {
     return (
       <div className="conteiner">
 
-        <ListValut
-          kurs={this.state.valuta}
+        <ListValut          
           filter={this.state.filter}
           onFilterChanged={this.changeFilter}
-          handleStatus={this.handleStatus}
-          setKurs={this.setKurs}
           activPriceBuy={this.state.activPriceBuy}
           handleSetKolvo={this.handleSetKolvo}
           kolichestvoValuti={this.state.kolichestvoValuti}
