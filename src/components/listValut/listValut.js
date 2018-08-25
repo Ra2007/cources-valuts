@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import './listValut.css';
 
-
 class ListValut extends Component {
 
     handleFilterChage = (e) => {
-
+        this.props.izmstst();
         this.props.handleActivPrice(Object.values(e.currentTarget)[1].data);
         this.props.handleSetKolvo(Object.values(e.currentTarget)[1].children[0].props.value);
         this.props.onFilterChanged(e.currentTarget.dataset.value);
@@ -23,7 +22,7 @@ class ListValut extends Component {
 
     izmenenieKP = (e) => {
         const valact = e.currentTarget.dataset.value
-     
+
         this.props.handleSetKolvo(document.getElementById(valact).value)
         this.props.izmenenieKParrent((e.currentTarget.className));
     }
@@ -49,7 +48,6 @@ class ListValut extends Component {
     }
 
     raschetprice = (item) => {
-
 
         switch (this.props.filter) {
             case 'byn': return (this.props.filter === item.kodval ? this.props.kolichestvoValuti : (this.props.kolichestvoValuti / item.price).toFixed(2))
@@ -230,18 +228,18 @@ class ListValut extends Component {
 
     render() {
         return (
-            <div className="contValuta">
+            <div className="conteiner">
                 <div className="row">
                     {this.props.kursibanki.map((item) => {
-                            if (item.name !== '') {
-                                if (this.props.filter === item.kodval && this.props.buystatus === item.kodpara.split('_')[2]) {
-                                    return (this.vivodpari(item))
-                                }
-                                if (this.props.filter !== item.kodval && this.props.buystatus !== item.kodpara.split('_')[2]) {
-                                    return (this.vivodpari(item))
-                                }
+                        if (item.name !== '') {
+                            if (this.props.filter === item.kodval) {
+                                if (this.props.buystatus === item.kodpara.split('_')[2]) { return (this.vivodpari(item)) }
                             }
-                        })
+                            if (this.props.filter !== item.kodval && this.props.buystatus !== item.kodpara.split('_')[2]) {
+                                return (this.vivodpari(item))
+                            }
+                        }
+                    })
                     }
                 </div>
             </div>
