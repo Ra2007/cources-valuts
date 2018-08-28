@@ -1,72 +1,10 @@
-.listValute {
-    border: 1px solid #458574;
-    padding: 10px;
-}
-
-.listValute input {
-    width: 50px;
-    
-}
-
-.blokValute {
+.block-curces {
     display: inline-block;
-    border: 2px solid #dae4e1;
-    padding: 20px;
+    border: .3px solid lightgray;
+    width: 16.6%;
+    max-height: 300px;
     margin: 5px;
-    cursor: pointer;
-    width: 70px;
-    height: 100px;
 
-
-}
-
-.active {
-    border: 2px solid #2a5549;
-}
-
-.select {
-    display: none;
-}
-
-.checkBuySell.select {
-    display: block;
-}
-
-.labelCheckBox {
-    font-size: 8px;
-}
-
-
-.imgStr {
-    width: 15%;
-    height: 15%;
-}
-
-input.valuta {
-    border: 0px solid !important;
-    font-size: 23px !important;
-    text-align: center !important;
-    max-width: 80px !important;
-    /* padding: 20px !important; */
-    /* margin: 50px; */
-    font-style: bold !important;
-
-}
-
-.block {
-    height: 200px;
-    background-color: #777777;
-    margin: 10px;
-}
-
-.conteiner {
-  
-}
-
-.contValuta {
-    max-width: 1400px;
-    margin: 0 auto;
-    margin-top: 100px;
 }
 
 
@@ -109,6 +47,3 @@ input.valuta {
     background: #118c4e;
 }
 
-.block1 {
-    height: 200px;
-}

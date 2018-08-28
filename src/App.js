@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { dataApi } from './data.js';
+import { dataApi } from './dataAppp';
 import ListValut from './components/listValut/listValut';
+
 
 class App extends Component {
 
@@ -83,7 +84,8 @@ class App extends Component {
   render() {
 
     return (
-      <div className="conteiner">
+      
+      
 
         <ListValut          
           filter={this.state.filter}
@@ -97,7 +99,7 @@ class App extends Component {
           handleActivPrice={this.handleActivPrice}
           izmstst={this.izmstst}
         />
-      </div>
+      
     );
   }
 }

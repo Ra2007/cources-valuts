@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './listValut.css';
+
 
 class ListValut extends Component {
 
@@ -7,12 +7,12 @@ class ListValut extends Component {
         const valact11 = e.currentTarget.dataset.value;
         this.props.handleActivPrice(Object.values(e.currentTarget)[1].data);
         this.props.handleSetKolvo(document.getElementById(valact11).value);
-        
+
         this.props.onFilterChanged(e.currentTarget.dataset.value);
         this.props.izmstst();
     }
 
-    
+
 
     handleSetKolvo1 = (e) => {
         this.props.handleSetKolvo(e.currentTarget.value)
@@ -28,19 +28,87 @@ class ListValut extends Component {
         console.log('zaglushka')
     }
 
-
-    vivodpari = (item) => {
-        return (<div className={this.props.filter === item.kodval ? 'col-sm-2 col-md-2 col-lg-2 col-xl-2 active' : 'col-sm-2 col-md-2 col-lg-2 col-xl-2'}
-            key={item.id} data-value={item.kodval} data={item.price} onClick={this.props.filter !== item.kodval ? this.handleFilterChage : this.zaglushka}  >
-
-            <input type="text" value={this.raschetprice(item)} id={item.kodval} onChange={this.handleSetKolvo1} />
-
-            <p>{item.name}<br />{item.price}<br />{item.kodpara}</p>
+    toggle = (item) => {
+        return (<div className="toggle-text">
             <div className={item.kodpara.split('_')[2] === 'buy' ? 'switch-btn switch-on' : 'switch-btn'}
-                 onClick={this.izmenenieKP} 
-                data-value={item.kodval}> {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ(buy)' : 'ПРОДАТЬ(sell)'}
+                onClick={this.izmenenieKP}
+                data-value={item.kodval}>
+                <span>
+                {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ' : 'ПРОДАТЬ'}
+                </span>
+                
             </div>
         </div>
+        )
+    }
+
+    spisokBankov = (item) => {
+        return (<div className="banks-text" ><ul className="ul-desktop">
+            {this.viborkaBanks(item.banks).map((item) => {
+                return (<li key={item}><a href="images/xxx.jpg">{item}</a></li>)
+            })}
+        </ul>
+
+        <ul className="ul-smart">
+            {
+                <li key={this.viborkaBanks(item.banks)[0]}><a href="images/xxx.jpg">{this.viborkaBanks(item.banks)[0]} > </a></li>
+            }
+        </ul>
+        </div>
+        )
+    }
+
+
+    viborkaBanks = arr => {
+        var obj = [];
+
+        for (var i = 0; i < arr.length; i++) {
+            var str = arr[i];
+            var tls = str.split(':')[1]
+            obj[i] = tls; // запомнить строку в виде свойства объекта
+        }
+        var arreys = this.unique(obj);
+        return arreys;
+    };
+
+    unique = (arr1) => {
+
+        var obj1 = {};
+
+        for (var i = 0; i < arr1.length; i++) {
+            var str1 = arr1[i];
+            obj1[str1] = true;
+        }
+        return Object.keys(obj1);
+    }
+
+    selectInput = (e) => {
+        // this.select();
+        console.log('123')
+    }
+
+
+    vivodpari = (item) => {
+        return (<div className={this.props.filter === item.kodval ? 'block-curces active' : 'block-curces'}
+            key={item.id} data-value={item.kodval} data={item.price} onClick={this.props.filter !== item.kodval ? this.handleFilterChage : this.zaglushka}  >
+
+
+                <div className="input-block">
+                    <input type="text" value={this.raschetprice(item)} id={item.kodval} onChange={this.handleSetKolvo1} onClick={this.selectInput} />
+                </div>
+
+                <div className="img-flags-block">
+                    <img src={'/flags/' + item.kodval + '.png'} className="rounded float-right" alt={item.name} title={item.name} />
+                </div>
+
+                <div className="bottom-content-block">
+                    
+                        {this.props.filter === item.kodval ? this.toggle(item) : this.spisokBankov(item)}
+                    
+                </div>
+
+            </div>
+        
         )
 
     }
@@ -225,23 +293,25 @@ class ListValut extends Component {
     }
 
     render() {
-        return (
-            <div className="contValuta">
-                <div className="row">
+        return (<div className="conteiner-flex">
+            
+                
                     {this.props.kursibanki.map((item) => {
                         if (item.name !== '') {
-                            if (this.props.filter === item.kodval && this.props.buystatus === item.kodpara.split('_')[2]) { 
+                            if (this.props.filter === item.kodval && this.props.buystatus === item.kodpara.split('_')[2]) {
                                 return (this.vivodpari(item))
                             }
-                            
+
                             if (this.props.filter !== item.kodval && this.props.buystatus !== item.kodpara.split('_')[2]) {
                                 return (this.vivodpari(item))
                             }
                         }
                     })
                     }
-                </div>
-            </div>
+
+                    </div>
+                
+            
         )
     }
 }
