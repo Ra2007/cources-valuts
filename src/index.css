@@ -1,54 +1,42 @@
-@font-face {
-  font-family: 'SFMono';
-  src: url('./fonts/SFMono-Light.eot');
-  src: url('./fonts/SFMono-Light.eot?#iefix') format('embedded-opentype'),
-      url('./fonts/SFMono-Light.woff2') format('woff2'),
-      url('./fonts/SFMono-Light.woff') format('woff'),
-      url('./fonts/SFMono-Light.ttf') format('truetype'),
-      url('./fonts/SFMono-Light.svg#SFMono-Light') format('svg');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SFMono';
-  src: url('./fonts/SFMono-Regular.eot');
-  src: url('./fonts/SFMono-Regular.eot?#iefix') format('embedded-opentype'),
-      url('./fonts/SFMono-Regular.woff2') format('woff2'),
-      url('./fonts/SFMono-Regular.woff') format('woff'),
-      url('./fonts/SFMono-Regular.ttf') format('truetype'),
-      url('./fonts/SFMono-Regular.svg#SFMono-Regular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'SFMono';
-  src: url('./fonts/SFMono-Bold.eot');
-  src: url('./fonts/SFMono-Bold.eot?#iefix') format('embedded-opentype'),
-      url('./fonts/SFMono-Bold.woff2') format('woff2'),
-      url('./fonts/SFMono-Bold.woff') format('woff'),
-      url('./fonts/SFMono-Bold.ttf') format('truetype'),
-      url('./fonts/SFMono-Bold.svg#SFMono-Bold') format('svg');
-  font-weight: bold;
-  font-style: normal;
-}
-
 * {
   box-sizing: border-box;
 }
 body {
-  font-family: 'SFMono',  sans-serif !important;
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Mono', monospace;
   background-color: #ffffff;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  
+  max-width: 1600px;
+  margin: 0 auto;
+   padding-top: 0px; 
+  padding-left: 40px;
+  margin-top: 32px;
+  margin-bottom: 20px;
+  
+  height: 54px;
+ 
+  
+}
+
+.text p {
+  vertical-align: center;
 }
 
 .conteiner-flex {
   display: flex;
   flex-wrap: wrap;
    /*border: .5px solid grey;*/ 
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding-top: 100px;
+  padding-top: 0px;
   
 }
 
@@ -68,11 +56,12 @@ body {
   position: relative;  
   top: 5px;
   /* border: .3px solid lightgray; */
-  width: 15%;
-  height: 150px;
-  margin: 9px;
-  margin-bottom: 70px;
-  padding-bottom: 20px; 
+  width: 12%;
+  height: 168px;
+  margin: 36px;
+  margin-bottom: 16px;
+  padding-bottom: 0px; 
+  margin-top: 0px;
 }
 
 .block-curces > div:nth-child(2) {
@@ -80,12 +69,14 @@ body {
   order: 3;
 }
 .block-curces input {
-  position: absolute;
+
+  display: inline-block;
+ 
   font-size: 23px;
-  font-family: 'SFMono',  sans-serif;
+  font-family: 'Roboto Mono', monospace;
   border: 0px;
   max-width: 120px;
-  padding: 1px;
+  padding: 0px;
   text-align: center;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -96,24 +87,49 @@ body {
   background-color: rgba(0, 117, 255, 0.3);
 }
 
+.block-curces .img-flags-block div {
+  display: inline-block;
+    width: 150px; 
+    height: 100px;
+    border: .3 solid green;
+    
+  
+  
+  /*height: 20%; */
+}
+
+.block-curces .input-block {
+  
+  
+  display: inline-block;
+  
+}
+
 .block-curces .img-flags-block img {
-  position: absolute;
-  left: 70%;
-  top: 2%;
- display: block;
-  max-width: 28px;
-  height: auto;
+  margin-left: 0px;
+width: 27px;
+height: 30px;
+position: relative;
+top: 3px;
+  
 }
 
 .bottom-content-block {
+  font-family: 'Roboto', sans-serif;
   position: absolute;
   top: 23%;
+}
+
+.bottom-content-block .banks-text {
+  position: relative;
+  top: -10px;
+  margin: 0px;
 }
 
 .toggle-text {
   text-align: center;
   position: relative;
-  left: 5%;
+  
   top: 10px;
 }
 
@@ -130,7 +146,7 @@ body {
 /* togle */
 .switch-btn {
   display: inline-block;
-  width: 94px; /* ширина переключателя */
+  width: 89px; /* ширина переключателя */
   height: 24px; /* высота переключателя */
   border-radius: 14px; /* радиус скругления */
   background: #ebebeb; /* цвет фона */
@@ -162,7 +178,7 @@ body {
   box-shadow: inset 0 0 10px 0 #999999; /* тень */
 }
 .switch-on::after {
-  left: 72px;
+  left: 67px;
   background: #a3a5a4;
 }
 
@@ -172,17 +188,19 @@ body {
 }
 
 .bottom-content-block li {
+  padding-bottom: 8px;
   list-style-type: none
 }
 
 .bottom-content-block ul {
-  margin-left: 10px;
-  padding-left: 10px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 
 .bottom-content-block ul li a {
   color: #000000;
   text-decoration: none;
+  
 }
 
 .bottom-content-block ul li a:hover {
@@ -236,16 +254,20 @@ body {
 @media (max-width: 480px){
 
   .block-curces {
+  
     
     width: 100%;
     height: 50px;
     padding: 0px;
+    margin-left: 8px;
+    margin-right: 8px;
     margin-bottom: 10px;
   }
 
   .block-curces input {
+    font-size: 23px;
     position: absolute;
-    left: 40px;
+    left: 30px;
     text-align: left;
     padding-left: 10px;
     
@@ -257,9 +279,15 @@ body {
 
   .bottom-content-block {
     position: absolute;
-    right: 5%;
-    top: -5px;
+    right: 1px;
+    top: -2px;
     text-align: right;
+  }
+
+  .bottom-content-block a {
+    position: relative;
+    top: -2px;
+    right: 8px;
   }
 
   .bottom-content-block ul.ul-desktop {
@@ -268,5 +296,58 @@ body {
 
   .bottom-content-block ul.ul-smart {
     display: inline-block;
+    position: relative;
+    top: 11px;
+    font-size: 13px;
   }
+
+
+  .switch-btn {
+    display: inline-block;
+    width: 94px; /* ширина переключателя */
+    height: 28px; /* высота переключателя */
+    border-radius: 14px; /* радиус скругления */
+    background: #ebebeb; /* цвет фона */
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 300ms; /* анимация */
+    font-size: 10px;
+    text-align: center;
+  }
+  .switch-btn::after {
+    content: "";
+    height: 22px; /* высота кнопки */
+    width: 22px; /* ширина кнопки */
+    border-radius: 18px; /* радиус кнопки */
+    background: #fff; /* цвет кнопки */
+    top: 3px; /* положение кнопки по вертикали относительно основы */
+    left: 2px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 300ms; /* анимация */
+    box-shadow: 0 0 7px 0 #999999; /* тень */
+    position: absolute;
+    z-index: 1;
+  }
+  .switch-on {
+    background: #fff;
+    box-shadow: inset 0 0 10px 0 #999999; /* тень */
+  }
+  .switch-on::after {
+    left: 70px;
+    background: #a3a5a4;
+  }
+
+    .toggle-text .switch-btn span {
+      
+      top: 7px;
+      
+    }
+    
+    
+   
 }
+
+

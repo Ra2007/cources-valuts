@@ -1,34 +1,31 @@
 import React, { Component } from 'react';
+import  uk  from './picture.svg';
 
 
 class ListValut extends Component {
 
-    handleFilterChage = (e) => {
+    handleFilterChage = e => {
         const valact11 = e.currentTarget.dataset.value;
         this.props.handleActivPrice(Object.values(e.currentTarget)[1].data);
         this.props.handleSetKolvo(document.getElementById(valact11).value);
-
         this.props.onFilterChanged(e.currentTarget.dataset.value);
         this.props.izmstst();
     }
 
-
-
-    handleSetKolvo1 = (e) => {
+    handleSetKolvo1 = e => {
         this.props.handleSetKolvo(e.currentTarget.value)
     }
 
-    izmenenieKP = (e) => {
+    izmenenieKP = e => {
         const valact = e.currentTarget.dataset.value;
         this.props.handleSetKolvo(document.getElementById(valact).value)
         this.props.izmenenieKParrent((e.currentTarget.className));
     }
 
     zaglushka = () => {
-        console.log('zaglushka')
     }
 
-    toggle = (item) => {
+    toggle = item => {
         return (<div className="toggle-text">
             <div className={item.kodpara.split('_')[2] === 'buy' ? 'switch-btn switch-on' : 'switch-btn'}
                 onClick={this.izmenenieKP}
@@ -42,7 +39,7 @@ class ListValut extends Component {
         )
     }
 
-    spisokBankov = (item) => {
+    spisokBankov = item => {
         return (<div className="banks-text" ><ul className="ul-desktop">
             {this.viborkaBanks(item.banks).map((item) => {
                 return (<li key={item}><a href="images/xxx.jpg">{item}</a></li>)
@@ -51,13 +48,12 @@ class ListValut extends Component {
 
         <ul className="ul-smart">
             {
-                <li key={this.viborkaBanks(item.banks)[0]}><a href="images/xxx.jpg">{this.viborkaBanks(item.banks)[0]} > </a></li>
+                <li key={this.viborkaBanks(item.banks)[0]}><a href="images/xxx.jpg">{this.viborkaBanks(item.banks)[0]}  </a> <img src={uk} alt="logo" className="logoHeader"/></li>
             }
         </ul>
         </div>
         )
     }
-
 
     viborkaBanks = arr => {
         var obj = [];
@@ -69,9 +65,9 @@ class ListValut extends Component {
         }
         var arreys = this.unique(obj);
         return arreys;
-    };
+    }
 
-    unique = (arr1) => {
+    unique = arr1 => {
 
         var obj1 = {};
 
@@ -82,38 +78,109 @@ class ListValut extends Component {
         return Object.keys(obj1);
     }
 
-    selectInput = (e) => {
-        // this.select();
-        console.log('123')
+    viewerBanks = item => {
+
+        switch (this.props.filter) {
+            case 'byn': return (this.spisokBankov(item) )
+            break;
+            case 'usd': switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[3]) : this.spisokBankov(this.props.kursibanki[2]));
+                case 'eur': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[23]) : this.spisokBankov(this.props.kursibanki[22]));
+                case 'rub': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[27]) : this.spisokBankov(this.props.kursibanki[26]));
+                default:
+                }
+            break;
+            case 'eur': switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[5]) : this.spisokBankov(this.props.kursibanki[4]));
+                case 'usd': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[23]) : this.spisokBankov(this.props.kursibanki[22]));
+                case 'rub': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[25]) : this.spisokBankov(this.props.kursibanki[24]));
+                default:
+            }
+            break;
+            case 'gbp': switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[7]) : this.spisokBankov(this.props.kursibanki[6]));
+                default:
+                }
+            break;
+            case 'chf': switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[9]) : this.spisokBankov(this.props.kursibanki[8]));
+                default:
+                }
+            break;
+            case 'rub':  switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[11]) : this.spisokBankov(this.props.kursibanki[10]));
+                case 'usd': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[27]) : this.spisokBankov(this.props.kursibanki[26]));
+                case 'eur': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[25]) : this.spisokBankov(this.props.kursibanki[24]));
+                default:
+                }
+            break;
+            case 'uah': switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[13]) : this.spisokBankov(this.props.kursibanki[12]));
+                default:
+                }
+            break;
+            case 'pln':  switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[15]) : this.spisokBankov(this.props.kursibanki[14]));
+                default:
+                }
+            break;
+            case 'czk':  switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[17]) : this.spisokBankov(this.props.kursibanki[16]));
+                default:
+                }
+            break;
+            case 'kzt':  switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[19]) : this.spisokBankov(this.props.kursibanki[18]));
+                default:
+                }
+            break;
+            case 'cny':  switch (item.kodval) {
+                case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[21]) : this.spisokBankov(this.props.kursibanki[20]));
+                default:
+                }
+            break;
+            default:
+        }
+    }    
+
+    vivodpari = item => {
+        return (<div 
+                    className={this.props.filter === item.kodval ? 'block-curces active' : 'block-curces'}
+                    key={item.id} 
+                >
+
+                    <div className="input-block">
+                        <input 
+                            type="text" 
+                            size={this.raschetprice(item).length || 3} 
+                            value={this.raschetprice(item)} 
+                            id={item.kodval} 
+                            onChange={this.handleSetKolvo1} 
+                            key={item.id} 
+                            data-value={item.kodval} 
+                            data={item.price} 
+                            onClick={this.props.filter !== item.kodval ? this.handleFilterChage : this.zaglushka}
+                        />                    
+                    </div>
+
+                    <div className="img-flags-block">
+                        <img 
+                            src={'/flags/' + item.kodval + '.png'} 
+                            className="rounded float-right" 
+                            alt={item.name} title={item.name} 
+                        />
+                    </div>
+
+                    <div className="bottom-content-block">                    
+                        {this.props.filter === item.kodval ? this.toggle(item) : this.viewerBanks(item)}                    
+                    </div>
+
+                </div>
+            )
+
     }
 
-
-    vivodpari = (item) => {
-        return (<div className={this.props.filter === item.kodval ? 'block-curces active' : 'block-curces'}
-            key={item.id} data-value={item.kodval} data={item.price} onClick={this.props.filter !== item.kodval ? this.handleFilterChage : this.zaglushka}  >
-
-
-                <div className="input-block">
-                    <input type="text" value={this.raschetprice(item)} id={item.kodval} onChange={this.handleSetKolvo1} onClick={this.selectInput} />
-                </div>
-
-                <div className="img-flags-block">
-                    <img src={'/flags/' + item.kodval + '.png'} className="rounded float-right" alt={item.name} title={item.name} />
-                </div>
-
-                <div className="bottom-content-block">
-                    
-                        {this.props.filter === item.kodval ? this.toggle(item) : this.spisokBankov(item)}
-                    
-                </div>
-
-            </div>
-        
-        )
-
-    }
-
-    raschetprice = (item) => {
+    raschetprice = item => {
 
         switch (this.props.filter) {
             case 'byn': return (this.props.filter === item.kodval ? this.props.kolichestvoValuti : (this.props.kolichestvoValuti / item.price).toFixed(2))
@@ -294,6 +361,7 @@ class ListValut extends Component {
 
     render() {
         return (<div className="conteiner-flex">
+        
             
                 
                     {this.props.kursibanki.map((item) => {
