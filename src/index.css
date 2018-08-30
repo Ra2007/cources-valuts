@@ -4,114 +4,72 @@
 body {
 font-family: 'Roboto', sans-serif;
 font-family: 'Roboto Mono', monospace;
-  background-color: #ffffff;
+background-color: #ffffff;
 }
 
 .text {
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
-  text-align: left;
-  display: flex;
-  flex-wrap: wrap;
-  
-  max-width: 1600px;
-  margin: 0 auto;
-   padding-top: 0px; 
-  padding-left: 40px;
-  margin-top: 32px;
-  margin-bottom: 20px;
-  
+  text-align: left; 
   height: 54px;
- 
-  
-}
-
-.text p {
-  vertical-align: center;
 }
 
 .conteiner-flex {
   display: flex;
-  flex-wrap: wrap;
-   /*border: .5px solid grey;*/ 
-  max-width: 1600px;
-  margin: 0 auto;
-  padding-top: 0px;
-  
+  flex-wrap: wrap; 
 }
 
 .conteiner-flex div {
-  display: inline-flex;
-  
- 
+  display: inline-flex; 
 }
-/* .verh {
-  width: 100%;
-  background-color: #999999;
-  height: 40px;
-} */
+
 .block-curces {
   display: flex;
   flex-direction: row;
   position: relative;  
-  top: 5px;
-  /* border: .3px solid lightgray; */
-  width: 12%;
+  top: 5px;  
   height: 168px;
-  margin: 36px;
-  margin-bottom: 16px;
-  padding-bottom: 0px; 
-  margin-top: 0px;
 }
 
 .block-curces > div:nth-child(2) {
   display: inline-flex;
   order: 3;
 }
-.block-curces input {
 
-  display: inline-block;
- 
+.block-curces input {
+  display: inline-block; 
   font-size: 23px;
   font-family: 'Roboto Mono', monospace;
   border: 0px;
   max-width: 120px;
   padding: 0px;
-  text-align: center;
+  text-align: left;
   padding-top: 4px;
   padding-bottom: 4px;
   outline: none;
 }
 
-.block-curces.active input {
-  background-color: rgba(0, 117, 255, 0.3);
-}
-
 .block-curces .img-flags-block div {
   display: inline-block;
-    width: 150px; 
-    height: 100px;
-    border: .3 solid green;
-    
-  
-  
-  /*height: 20%; */
+  width: 150px;
+  height: 100px;
 }
 
-.block-curces .input-block {
-  
-  
-  display: inline-block;
-  
+.block-curces .input-block {  
+  display: inline-block;  
 }
 
 .block-curces .img-flags-block img {
-  margin-left: 0px;
-width: 27px;
-height: 30px;
-position: relative;
-top: 3px;
-  
+  margin-left: -10px;
+  width: 23px;
+  height: 26px;
+  position: relative;
+  top: 6px;  
+}
+
+.input-flag-button {
+  border: .3px solid red;
+  height: 30px;
 }
 
 .bottom-content-block {
@@ -122,7 +80,7 @@ top: 3px;
 
 .bottom-content-block .banks-text {
   position: relative;
-  top: -10px;
+  top: -6px;
   margin: 0px;
 }
 
@@ -165,21 +123,22 @@ top: 3px;
   height: 20px; /* высота кнопки */
   width: 20px; /* ширина кнопки */
   border-radius: 18px; /* радиус кнопки */
+  border: 1px solid #d9d9d9;
   background: #fff; /* цвет кнопки */
-  top: 2px; /* положение кнопки по вертикали относительно основы */
-  left: 2px; /* положение кнопки по горизонтали относительно основы */
+  top: 1px; /* положение кнопки по вертикали относительно основы */
+  left: 1px; /* положение кнопки по горизонтали относительно основы */
   transition-duration: 300ms; /* анимация */
-  box-shadow: 0 0 7px 0 #999999; /* тень */
+  /*box-shadow: 0 0 7px 0 #999999; /* тень */
   position: absolute;
   z-index: 1;
 }
 .switch-on {
-  background: #fff;
-  box-shadow: inset 0 0 10px 0 #999999; /* тень */
+  background:  #ebebeb;
+  /*box-shadow: inset 0 0 10px 0 #999999; /* тень */
 }
 .switch-on::after {
-  left: 67px;
-  background: #a3a5a4;
+  left: 66px;
+  background: #fff;
 }
 
 
@@ -217,29 +176,117 @@ top: 3px;
 
 /* Стили адаптивности */
 
+@media (min-width: 1681px) and (max-width: 2500px){
+  
 
-/* большие экраны */
-@media (min-width: 1200px){
+}
+
+@media (min-width: 1281px) and (max-width: 1680px){
+ 
+}
+
+.conteiner-flex {
+  max-width: 1600px;
+  padding-left: 0px; 
+  margin: 0 auto;
+  
+}
+
+.text {
+  max-width: 1600px;
+  margin: 0 auto;
+  margin-top: 23px;
+  margin-bottom: 34px;
+}
+
+.block-curces {
+  width: 16.6%;
+  
+ 
+ 
+  margin-bottom: 16px;
+ 
+}
+
+
+
+@media (min-width: 993px) and (max-width: 1280px){   /* большие экраны */
+
   .bottom-content-block ul.ul-smart {
     display: none;
+  }
+
+  .conteiner-flex {
+    max-width: 1200px;
+    padding-left: 0px;
+    margin-left: 16px;
+    padding-top: 8px;
+    
+  }
+
+  .text {
+    padding-top: 1px;
+    padding-left: 16px;
+    margin-top: 20px;
+       
+
+     
+  }
+  .text p {
+    font-size: 17px;
+    line-height: 25px;
+    padding-right: 30px;
+    margin-top: 14px;
+  }
+
+  .block-curces {
+    width: 158px;
+    margin: 0px;
+    margin-right: 42px;
+    margin-left: px;
+    margin-bottom: 16px;
+   
   }
 
 }      
 
 /* небольшие экраны */
-@media (max-width: 992px){
+@media (max-width: 992px) and (min-width: 768px){
+  
   .block-curces {
-    width: 20%;
+    width: 25%;
+    
   }
 
   .bottom-content-block ul.ul-smart {
-    display: none;
+    display: none;    
   }
+
+  .text {
+    padding-top: 1px;
+    padding-left: 8px;
+       
+
+     
+  }
+  .text p {
+    font-size: 17px;
+    line-height: 25px;
+    padding-right: 30px;
+    margin-top: 14px;
+  }
+
+  .conteiner-flex {
+    margin-top: 27px;
+    padding-left: 20px;
+  }
+
 
 }
 
 /* планшетные экраны */
-@media (max-width: 767px){
+@media (max-width: 767px) and (min-width: 481px) {
+  
 
   .block-curces {
     width: 30%;
@@ -248,10 +295,52 @@ top: 3px;
   .bottom-content-block ul.ul-smart {
     display: none;
   }
+  
+  .text {
+    padding-top: 1px;
+    padding-left: 8px;
+       
+
+     
+  }
+  .text p {
+    font-size: 17px;
+    line-height: 25px;
+    padding-right: 30px;
+    margin-top: 14px;
+  }
+  .conteiner-flex {
+    margin-top: 27px;
+    padding-left: 20px;
+  }
+
+ 
+
 }
 
-/* мобильные экраны */
-@media (max-width: 480px){
+
+@media screen and (max-width: 480px){    /* мобильные экраны */
+  
+
+
+  .text {
+    padding-top: 1px;
+    padding-left: 8px;
+       
+
+     
+  }
+  .text p {
+    font-size: 17px;
+    line-height: 25px;
+    padding-right: 30px;
+    margin-top: 14px;
+  }
+
+  .conteiner-flex {
+    margin-top: 27px;
+    padding-left: 13px;
+  }
 
   .block-curces {
   
@@ -260,7 +349,7 @@ top: 3px;
     height: 50px;
     padding: 0px;
     margin-left: 8px;
-    margin-right: 8px;
+    margin-right: 3px;
     margin-bottom: 10px;
   }
 
@@ -269,9 +358,11 @@ top: 3px;
     position: absolute;
     left: 30px;
     text-align: left;
-    padding-left: 10px;
+    padding-left: -4px;
     
   }
+
+
 
   .img-flags-block {
     position: absolute;
@@ -301,6 +392,17 @@ top: 3px;
     font-size: 13px;
   }
 
+  .bottom-content-block ul.ul-smart img {
+    position: relative;
+
+  }
+
+  .bottom-content-block .banks-text {
+   
+    top: -7px;
+    
+  }
+
 
   .switch-btn {
     display: inline-block;
@@ -323,26 +425,31 @@ top: 3px;
     height: 22px; /* высота кнопки */
     width: 22px; /* ширина кнопки */
     border-radius: 18px; /* радиус кнопки */
+    border: 1px solid #d9d9d9;
     background: #fff; /* цвет кнопки */
-    top: 3px; /* положение кнопки по вертикали относительно основы */
+    top: 2px; /* положение кнопки по вертикали относительно основы */
     left: 2px; /* положение кнопки по горизонтали относительно основы */
     transition-duration: 300ms; /* анимация */
-    box-shadow: 0 0 7px 0 #999999; /* тень */
+    /*box-shadow: 0 0 7px 0 #999999; /* тень */
     position: absolute;
     z-index: 1;
   }
   .switch-on {
-    background: #fff;
-    box-shadow: inset 0 0 10px 0 #999999; /* тень */
+    background:  #ebebeb;
+    /*box-shadow: inset 0 0 10px 0 #999999;  тень */
   }
   .switch-on::after {
-    left: 70px;
-    background: #a3a5a4;
+    left: 69px;
+    background: #fff;
+  }
+
+  .toggle-text {
+    top: 8px;
   }
 
     .toggle-text .switch-btn span {
       
-      top: 7px;
+      top: 8px;
       
     }
     

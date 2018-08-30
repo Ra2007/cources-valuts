@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import  uk  from './picture.svg';
+
+
 
 
 class ListValut extends Component {
 
+    handleFocus = (event) => {
+        console.log('handleFocus',event.target);
+        event.target.select();
+      }
+
+          
+
+        componentDidMount = () => { //ставим фокус в input\
+
+            
+            var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
+            console.log(inputfocus);
+            inputfocus.focus();
+            
+          }
+        
+
     handleFilterChage = e => {
+        
         const valact11 = e.currentTarget.dataset.value;
         this.props.handleActivPrice(Object.values(e.currentTarget)[1].data);
         this.props.handleSetKolvo(document.getElementById(valact11).value);
@@ -31,7 +52,7 @@ class ListValut extends Component {
                 onClick={this.izmenenieKP}
                 data-value={item.kodval}>
                 <span>
-                {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ' : 'ПРОДАТЬ'}
+                {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ' : 'НАБАЦЬ'}
                 </span>
                 
             </div>
@@ -82,7 +103,7 @@ class ListValut extends Component {
 
         switch (this.props.filter) {
             case 'byn': return (this.spisokBankov(item) )
-            break;
+           
             case 'usd': switch (item.kodval) {
                 case 'byn': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[3]) : this.spisokBankov(this.props.kursibanki[2]));
                 case 'eur': return (item.kodpara.split('_')[2] === 'buy' ? this.spisokBankov(this.props.kursibanki[23]) : this.spisokBankov(this.props.kursibanki[22]));
@@ -141,8 +162,21 @@ class ListValut extends Component {
             break;
             default:
         }
-    }    
+    }
+    
+    clickFlagFocusInput = (e) => {
 
+        console.log(e);
+        var setfcs = document.getElementById(e.currentTarget.dataset.value);
+        this.props.filter !== e.currentTarget.dataset.value ? setfcs.focus() : this.zaglushka
+        
+
+        this.props.filter !== e.currentTarget.dataset.value ? this.handleFilterChage(e) : this.zaglushka
+
+        
+
+    }
+  
     vivodpari = item => {
         return (<div 
                     className={this.props.filter === item.kodval ? 'block-curces active' : 'block-curces'}
@@ -160,6 +194,9 @@ class ListValut extends Component {
                             data-value={item.kodval} 
                             data={item.price} 
                             onClick={this.props.filter !== item.kodval ? this.handleFilterChage : this.zaglushka}
+                            name={item.id}
+                            ref={item.kodval}
+                            onFocus={this.handleFocus}
                         />                    
                     </div>
 
@@ -167,9 +204,14 @@ class ListValut extends Component {
                         <img 
                             src={'/flags/' + item.kodval + '.png'} 
                             className="rounded float-right" 
-                            alt={item.name} title={item.name} 
+                            alt={item.name} title={item.name}
+                            data={item.price} 
+                            data-value={item.kodval} 
+                            onClick={this.clickFlagFocusInput}
+                           
                         />
                     </div>
+                    
 
                     <div className="bottom-content-block">                    
                         {this.props.filter === item.kodval ? this.toggle(item) : this.viewerBanks(item)}                    
@@ -376,6 +418,8 @@ class ListValut extends Component {
                         }
                     })
                     }
+
+                    
 
                     </div>
                 
