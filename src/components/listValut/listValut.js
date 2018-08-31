@@ -52,7 +52,7 @@ class ListValut extends Component {
                 onClick={this.izmenenieKP}
                 data-value={item.kodval}>
                 <span>
-                {item.kodpara.split('_')[2] === 'sell' ? 'КУПИТЬ' : 'НАБАЦЬ'}
+                {item.kodpara.split('_')[2] === 'sell' ? 'абмяняць' : 'набыць'}
                 </span>
                 
             </div>
