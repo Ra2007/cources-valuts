@@ -13,7 +13,7 @@ padding: 16px 32px;
   font-size: 15px;
   text-align: left; 
   height: 54px;
-  max-width: 1600px;
+  max-width: 1380px;
   margin: 0 auto;
   margin-bottom: 24px;
 }
@@ -22,7 +22,7 @@ padding: 16px 32px;
   /* display: flex;
   flex-wrap: wrap;  */
   margin: 0 auto;
-  max-width: 1600px;
+  max-width: 1380px;
   
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
@@ -73,10 +73,11 @@ padding: 16px 32px;
 }
 
 .block-curces .img-flags-block img {
-  margin-left: -10px;
+  /*margin-left: -10px;*/
   width: 23px;
   height: 26px;
   position: relative;
+  left: -10px;
   top: 6px;  
 }
 
