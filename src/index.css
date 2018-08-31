@@ -18,26 +18,27 @@ padding: 20px 40px;
 .conteiner-flex {
   /* display: flex;
   flex-wrap: wrap;  */
-
   margin: 0 auto;
   max-width: 1600px;
   
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
   
-  background: #FFEA9E;
+ 
 }
 
 .conteiner-flex div {
   /* display: inline-flex;  */
+
+  
 }
 
 .block-curces {
   display: flex;
   flex-direction: row;
   position: relative;  
-  top: 5px;  
-  height: 168px;
+  top: 3px;  
+  height: 184px;
 }
 
 .block-curces > div:nth-child(2) {
@@ -103,11 +104,11 @@ padding: 20px 40px;
 .toggle-text .switch-btn span {
   position: relative;
   top: 5px;
-  left: 32px;
+  left: 7px;
 }
 
 .toggle-text .switch-btn.switch-on span {
-  left: 16px;
+  left: -6px;
 }
 
 /* togle */
@@ -219,11 +220,20 @@ padding: 20px 40px;
 
 
 
-@media (min-width: 993px) and (max-width: 1280px){   /* большие экраны */
+@media (min-width: 481px) and (max-width: 1280px){   /* большие экраны */
 
   .bottom-content-block ul.ul-smart {
     display: none;
   }
+
+  body {
+    padding: 16px 16px;
+    }
+
+    .text { 
+      margin-bottom: 24px;
+    }
+    
 
   /* .conteiner-flex {
     max-width: 1200px;
@@ -260,17 +270,16 @@ padding: 20px 40px;
 }       
 
 /* небольшие экраны */
-@media (max-width: 992px) and (min-width: 768px){
+/*@media (max-width: 992px) and (min-width: 768px){*/
   
   /* .block-curces {
     width: 25%;
     
   } */
 
-  .bottom-content-block ul.ul-smart {
+ /* .bottom-content-block ul.ul-smart {
     display: none;    
-  }
-
+  }*/
   /* .text {
     padding-top: 1px;
     padding-left: 8px;
@@ -291,21 +300,21 @@ padding: 20px 40px;
   } */
 
 
-}
+/*}*/
 
 /* планшетные экраны */
-@media (max-width: 767px) and (min-width: 481px) {
+/*@media (max-width: 767px) and (min-width: 481px) {*/
   
 
-  .block-curces {
+  /* .block-curces {
     width: 30%;
-  }
+  } */
 
-  .bottom-content-block ul.ul-smart {
+  /*.bottom-content-block ul.ul-smart {
     display: none;
-  }
+  }*/
   
-  .text {
+  /* .text {
     padding-top: 1px;
     padding-left: 8px;
        
@@ -321,20 +330,28 @@ padding: 20px 40px;
   .conteiner-flex {
     margin-top: 27px;
     padding-left: 20px;
-  }
+  } */
 
  
 
-}
+/*}*/
 
 
 @media screen and (max-width: 480px){    /* мобильные экраны */
+
+
+  body {
+    padding: 14px 12px;
+    }
+    
   
 
 
   .text {
+    position: relative;
+    left: -3px;
     padding-top: 1px;
-    padding-left: 8px;
+    padding-left: 0px;
        
 
      
@@ -343,12 +360,12 @@ padding: 20px 40px;
     font-size: 17px;
     line-height: 25px;
     padding-right: 30px;
-    margin-top: 14px;
+   margin-top: 0px;
   }
 
   .conteiner-flex {
-    margin-top: 27px;
-    padding-left: 13px;
+    margin-top: 16px;
+   
   }
 
   .block-curces {
