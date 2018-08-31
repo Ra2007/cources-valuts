@@ -178,6 +178,8 @@ class ListValut extends Component {
     }
   
     vivodpari = item => {
+
+        let size = {width: `${this.raschetprice(item).length * 14 || 3 * 14}px`}
         return (<div 
                     className={this.props.filter === item.kodval ? 'block-curces active' : 'block-curces'}
                     key={item.id} 
@@ -186,7 +188,9 @@ class ListValut extends Component {
                     <div className="input-block">
                         <input 
                             type="text" 
-                            size={this.raschetprice(item).length || 3} 
+                            //  size={this.raschetprice(item).length-1 || 3}
+                            style={size}
+                            
                             value={this.raschetprice(item)} 
                             id={item.kodval} 
                             onChange={this.handleSetKolvo1} 
