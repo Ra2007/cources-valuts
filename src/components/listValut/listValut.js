@@ -18,7 +18,7 @@ class ListValut extends Component {
 
             
             var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
-            console.log(inputfocus);
+            
             inputfocus.focus();
             
           }
@@ -165,19 +165,19 @@ class ListValut extends Component {
     }
     
     clickFlagFocusInput = (e) => {
-
-        console.log(e);
         var setfcs = document.getElementById(e.currentTarget.dataset.value);
-        this.props.filter !== e.currentTarget.dataset.value ? setfcs.focus() : this.zaglushka
+        this.props.filter !== e.currentTarget.dataset.value ? setfcs.focus() : this.zaglushka();
         
 
-        this.props.filter !== e.currentTarget.dataset.value ? this.handleFilterChage(e) : this.zaglushka
+        this.props.filter !== e.currentTarget.dataset.value ? this.handleFilterChage(e) : this.zaglushka();
 
         
 
     }
   
     vivodpari = item => {
+
+        let dyspleiValue = parseFloat(this.raschetprice(item));
 
         let size = {width: `${this.raschetprice(item).length * 14 || 3 * 14}px`}
         return (<div 
@@ -414,7 +414,7 @@ class ListValut extends Component {
                         if (item.name !== '') {
                             if (this.props.filter === item.kodval && this.props.buystatus === item.kodpara.split('_')[2]) {
                                 return (this.vivodpari(item))
-                            }
+                            } 
 
                             if (this.props.filter !== item.kodval && this.props.buystatus !== item.kodpara.split('_')[2]) {
                                 return (this.vivodpari(item))
