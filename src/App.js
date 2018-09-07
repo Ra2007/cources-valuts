@@ -3,6 +3,7 @@ import { dataApi } from './dataAppp';
 import ListValut from './components/listValut/listValut';
 
 
+
 class App extends Component {
 
   constructor() {
@@ -12,15 +13,34 @@ class App extends Component {
       kolichestvoValuti: 100,
       activPriceBuy: 1,
       buystatus: 'buy',
+      viewBankList: false,
+      activePareBanks: '',
       kursibanki: []
     };
     this.state.kursibanki = dataApi;
   }
 
 
+
+  handleActiveParBanks = (para) => {
+    this.setState({
+      activePareBanks: para
+    });
+    console.log(this.state.activePareBanks)
+  }
+
+
   changeFilter = (filtrValue) => {
     this.setState({
       filter: filtrValue
+    });
+  }
+
+  perehodBanks = () => {
+console.log('11')
+    let newViewBankList = !this.state.viewBankList;
+    this.setState({
+      viewBankList: newViewBankList
     });
   }
 
@@ -83,11 +103,9 @@ class App extends Component {
 
   render() {
 
-    return (
+    return ( 
       
-      
-
-        <ListValut          
+      <ListValut          
           filter={this.state.filter}
           onFilterChanged={this.changeFilter}
           activPriceBuy={this.state.activPriceBuy}
@@ -98,7 +116,14 @@ class App extends Component {
           izmenenieKParrent={this.izmenenieKParrent}
           handleActivPrice={this.handleActivPrice}
           izmstst={this.izmstst}
+          perehodBanks={this.perehodBanks}
+          viewBankList={this.state.viewBankList}
+          state={this.state}
+          handleActiveParBanks={this.handleActiveParBanks}
+          activePareBanks={this.state.activePareBanks}
         />
+        
+         
       
     );
   }
