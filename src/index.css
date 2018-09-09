@@ -31,6 +31,14 @@ padding: 16px 32px;
  
 }
 
+.conteiner-second {
+  margin: 0 auto;
+  max-width: 1380px;
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
+}
+
 .conteiner-flex div {
   /* display: inline-flex;  */
 
@@ -44,8 +52,8 @@ padding: 16px 32px;
 }
 
 .buttonBanks {
-  position: absolute;
-  right: 100px;
+  
+  width: 50px;
   background-color: red;
   z-index: 9999;
 }
