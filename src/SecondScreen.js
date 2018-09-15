@@ -12,10 +12,10 @@ class SecondScreen extends Component {
   };
 
   // complete
-  componentDidMount = () => {
-    var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
-    inputfocus.focus();
-  };
+  // componentDidMount = () => {
+  //   var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
+  //   inputfocus.focus();
+  // };
   secondScreen = () => {
     switch (this.props.state.activeCurrencyCode) {
       case "byn":
