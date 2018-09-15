@@ -1,130 +1,102 @@
-import React, { Component } from 'react';
-import { dataApi } from './dataAppp';
-import ListValut from './components/listValut/listValut';
+import React, { Component } from "react";
 
-
+import { Switch, Route } from "react-router-dom";
+import { dataApi } from "./data/dataAppp";
+import SecondScreen from "./SecondScreen";
+import FirstScreen from "./FirstScreen";
 
 class App extends Component {
-
   constructor() {
-    super()
+    super();
     this.state = {
-      filter: "byn",
-      kolichestvoValuti: 100,
+      activeCurrencyCode: "byn",
+      amountCurrency: 100,
       activPriceBuy: 1,
-      buystatus: 'buy',
+      buyStatus: "buy",
       viewBankList: false,
-      activePareBanks: '',
-      kursibanki: []
+      activePareBanks: "eur_byn_buy",
+      coursesBanksArray: dataApi,
+      mapStatusScnScr: false,
+      changeMapStatusScnScrST: () => this.changeMapStatusScnScr(),
+      handleActivPriceST: price => this.handleActivPrice(price),
+      izmststST: () => this.izmstst(),
+      handleSetQntST: qnt => this.handleSetQnt(qnt),
+      changeFilterST: filter => this.changeFilter(filter),
+      changeToggleST: ClsBtn => this.changeToggle(ClsBtn),
+      handleActiveParBanksST: para => this.handleActiveParBanks(para)
     };
-    this.state.kursibanki = dataApi;
   }
 
+  handleActivPrice = price => {
+    this.setState({
+      activPriceBuy: price
+    });
+    console.log(this.state.activPriceBuy);
+  };
 
+  izmstst = () => {
+    if (this.state.buyStatus === "buy") {
+      this.setState({
+        buyStatus: "sell"
+      });
+    } else {
+      this.setState({
+        buyStatus: "buy"
+      });
+    }
+  };
 
-  handleActiveParBanks = (para) => {
+  changeMapStatusScnScr = () => {
+    this.setState({
+      mapStatusScnScr: !this.state.mapStatusScnScr
+    });
+    console.log("status map ", this.state.mapStatusScnScr);
+  };
+
+  handleActiveParBanks = para => {
     this.setState({
       activePareBanks: para
     });
-    console.log(this.state.activePareBanks)
-  }
+    console.log("11", this.state.activePareBanks);
+  };
 
-
-  changeFilter = (filtrValue) => {
+  handleSetQnt = qnt => {
     this.setState({
-      filter: filtrValue
+      amountCurrency: qnt
     });
-  }
+  };
 
-  perehodBanks = () => {
-console.log('11')
-    let newViewBankList = !this.state.viewBankList;
+  changeFilter = filtrValue => {
     this.setState({
-      viewBankList: newViewBankList
+      activeCurrencyCode: filtrValue
     });
-  }
+  };
 
-  handleActivPrice = (price) => {
-    this.setState({
-      activPriceBuy: price
-    })
-  }
-
- handleSetKolvo = (kl) => {
-    this.setState({
-      kolichestvoValuti: kl
-    })
-  }
-
-  izmenenieKParrent = (classBtn) => {
-    if (classBtn === 'switch-btn switch-on') {
+  changeToggle = classBtn => {
+    if (classBtn === "switch-btn switch-on") {
       this.setState({
-        buystatus: 'sell'
-      })
+        buyStatus: "sell"
+      });
     } else {
       this.setState({
-        buystatus: 'buy'
-      })
+        buyStatus: "buy"
+      });
     }
-  }
-
-  izmstst = () => {
-    if (this.state.buystatus === 'buy') {
-      this.setState({
-        buystatus: 'sell'
-      })
-    } else {
-      this.setState({
-        buystatus: 'buy'
-      })
-    }
-  }
-
-  // componentDidMount () {
-  // //var data = 1;
-  // var that = this;   
-  // var request = new Request('http://localhost:5006/api', {
-  //   method: 'POST',
-  //   headers: new Headers({'Content-Type': 'application/x-www-form-urlencoded'}),
-  //   //body: data
-  // });
-  // fetch(request)
-  // .then(function(response) {response.json()
-  //   .then(function(data) {
-  //     let newData = Object.assign(that.state.kursibanki, data);
-  //     that.setState({kursibanki: newData});
-  //   })
-  // })
-  // .catch(function(err) {console.log(err)
-  //   });
-  //  }
-
-
+  };
 
   render() {
-
-    return ( 
-      
-      <ListValut          
-          filter={this.state.filter}
-          onFilterChanged={this.changeFilter}
-          activPriceBuy={this.state.activPriceBuy}
-          handleSetKolvo={this.handleSetKolvo}
-          kolichestvoValuti={this.state.kolichestvoValuti}
-          kursibanki={this.state.kursibanki}
-          buystatus={this.state.buystatus}
-          izmenenieKParrent={this.izmenenieKParrent}
-          handleActivPrice={this.handleActivPrice}
-          izmstst={this.izmstst}
-          perehodBanks={this.perehodBanks}
-          viewBankList={this.state.viewBankList}
-          state={this.state}
-          handleActiveParBanks={this.handleActiveParBanks}
-          activePareBanks={this.state.activePareBanks}
+    return (
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={props => <FirstScreen {...props} state={this.state} />}
         />
-        
-         
-      
+        <Route
+          path="/details"
+          render={props => <SecondScreen {...props} state={this.state} />}
+        />
+      </Switch>
     );
   }
 }

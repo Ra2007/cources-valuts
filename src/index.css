@@ -3,10 +3,10 @@
 }
 
 body {
-font-family: 'Roboto', sans-serif;
-font-family: 'Roboto Mono', monospace;
-background-color: #ffffff;
-margin: 0px;
+  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Mono", monospace;
+  background-color: #ffffff;
+  margin: 0px;
 }
 
 .conteiner-body-main {
@@ -14,9 +14,9 @@ margin: 0px;
 }
 
 .text {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 15px;
-  text-align: left; 
+  text-align: left;
   height: 54px;
   max-width: 1380px;
   margin: 0 auto;
@@ -26,11 +26,9 @@ margin: 0px;
 .conteiner-flex {
   margin: 0 auto;
   max-width: 1380px;
-  
+
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(200px, 1fr));
-  
- 
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .conteiner-second {
@@ -41,19 +39,25 @@ margin: 0px;
 .conteiner-second-grid {
   display: grid;
   grid-template-columns: minmax(200px, 460px) 2fr;
+  grid-template-rows: 100%;
+  min-height: 100vh;
 }
 
 .column1 {
   padding: 36px 40px;
 }
 
-.column1 span{
-  font-family: 'Roboto Mono', monospace;
+.column2 section {
+  min-height: 100vh;
+}
+
+.column1 span {
+  font-family: "Roboto Mono", monospace;
   font-size: 23px;
 }
 
 .column1 ul {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 15px;
   list-style-type: none;
   padding-left: 2px;
@@ -65,7 +69,7 @@ margin: 0px;
 }
 
 .column1 .block-curces {
- height: 44px;
+  height: 44px;
 }
 
 .column1 .text {
@@ -73,33 +77,35 @@ margin: 0px;
 }
 
 .map {
-  
   height: 800px;
   width: 800px;
 }
 
 .buttonBanks {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   font-size: 13px;
   width: 130px;
- 
+
   z-index: 9999;
   margin-bottom: 22px;
+}
+
+.buttonBanks a {
+  color: black;
+  text-decoration: inherit;
 }
 
 .buttonBanks:hover {
   cursor: pointer;
   background-color: rgb(252, 250, 250);
   border-radius: 2px;
-  
 }
-
 
 .block-curces {
   display: flex;
   flex-direction: row;
-  position: relative;  
-  top: 3px;  
+  position: relative;
+  top: 3px;
   height: 184px;
 }
 
@@ -109,12 +115,11 @@ margin: 0px;
 }
 
 .block-curces input {
- 
-  display: inline-block; 
+  display: inline-block;
   font-size: 23px;
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   border: 0px;
-  
+
   padding: 0px;
   text-align: left;
   padding-top: 4px;
@@ -129,29 +134,23 @@ margin: 0px;
 }
 
 .block-curces .input-block {
-  
-  display: inline-block; 
-   
+  display: inline-block;
 }
 
 .block-curces .img-flags-block img {
- 
   width: 31px;
   height: 33px;
   padding-top: 7px;
   padding-left: 8px;
- 
-
-  
 }
 
 .input-flag-button {
-  border: .3px solid red;
+  border: 0.3px solid red;
   height: 30px;
 }
 
 .bottom-content-block {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   position: absolute;
   top: 23%;
 }
@@ -163,7 +162,6 @@ margin: 0px;
 }
 
 .toggle-text {
- 
   margin-top: 10px;
 
   height: 24px;
@@ -171,13 +169,11 @@ margin: 0px;
 }
 
 .toggle-text .switch-btn span {
- 
-
   white-space: nowrap;
-    overflow: hidden;
-    position: relative;
+  overflow: hidden;
+  position: relative;
 
-    left: 7px; 
+  left: 7px;
 }
 
 .toggle-text .switch-btn.switch-on span {
@@ -216,14 +212,13 @@ margin: 0px;
   z-index: 1;
 }
 .switch-on {
-  background:  #ebebeb;
+  background: #ebebeb;
   /*box-shadow: inset 0 0 10px 0 #999999; /* тень */
 }
 .switch-on::after {
   left: 66px;
   background: #fff;
 }
-
 
 .bottom-content-block ul li {
   font-size: 13px;
@@ -242,7 +237,6 @@ margin: 0px;
 .bottom-content-block ul li a {
   color: #000000;
   text-decoration: none;
-  
 }
 
 .bottom-content-block ul li a:hover {
@@ -253,48 +247,95 @@ margin: 0px;
   display: none;
 }
 
+/* toggle second screen */
 
+.toggle-text-second {
+  margin-top: 10px;
 
+  height: 36px;
+  line-height: 36px;
+}
 
+.toggle-text-second .switch-btn-second span {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  z-index: 9999;
+  font-size: 13px;
+}
+
+.toggle-text-second .switch-btn-second .span1 {
+  right: 55px;
+}
+.toggle-text-second .switch-btn-second .span2 {
+  left: 55px;
+}
+
+.switch-btn-second {
+  display: inline-block;
+  width: 343px; /* ширина переключателя */
+  height: 36px; /* высота переключателя */
+  border-radius: 12px; /* радиус скругления */
+  background: #ebebeb; /* цвет фона */
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms; /* анимация */
+  font-size: 10px;
+  text-align: center;
+}
+.switch-btn-second::after {
+  content: "";
+  height: 32px; /* высота кнопки */
+  width: 170px; /* ширина кнопки */
+  border-radius: 10px; /* радиус кнопки */
+  border: 1px solid #d9d9d9;
+  background: #fff; /* цвет кнопки */
+  top: 1px; /* положение кнопки по вертикали относительно основы */
+  left: 1px; /* положение кнопки по горизонтали относительно основы */
+  transition-duration: 300ms; /* анимация */
+  /*box-shadow: 0 0 7px 0 #999999; /* тень */
+  position: absolute;
+  z-index: 1;
+}
+.switch-on-second {
+  background: #ebebeb;
+  /*box-shadow: inset 0 0 10px 0 #999999; /* тень */
+}
+.switch-on-second::after {
+  left: 170px;
+  background: #fff;
+}
 
 /* Стили адаптивности */
 
-@media (min-width: 1681px) and (max-width: 2500px){
-  
-
+@media (min-width: 1681px) and (max-width: 2500px) {
 }
 
-@media (min-width: 1281px) and (max-width: 1680px){
- 
+@media (min-width: 1281px) and (max-width: 1680px) {
 }
 
-
-
-
-
-@media (min-width: 481px) and (max-width: 1280px){   /* большие экраны */
+@media (min-width: 481px) and (max-width: 1280px) {
+  /* большие экраны */
 
   .bottom-content-block ul.ul-smart {
     display: none;
   }
 
-  
-
-    .text { 
-      margin-bottom: 24px;
-    }
-    
+  .text {
+    margin-bottom: 24px;
   }
+}
 
+@media screen and (max-width: 480px) {
+  /* мобильные экраны */
 
-@media screen and (max-width: 480px){    /* мобильные экраны */
-
-  
-    .conteiner-body-main {
-      padding: 22px 20px;
-    }
-  
-
+  .conteiner-body-main {
+    padding: 22px 20px;
+  }
 
   .text {
     position: relative;
@@ -302,25 +343,19 @@ margin: 0px;
     padding-top: 1px;
     padding-left: 0px;
     margin-bottom: 29px;
-       
-
-     
   }
   .text p {
     font-size: 17px;
     line-height: 25px;
     padding-right: 30px;
-   margin-top: 0px;
+    margin-top: 0px;
   }
 
   .conteiner-flex {
     margin-top: 16px;
-   
   }
 
   .block-curces {
-  
-    
     width: 100%;
     height: 50px;
     padding: 0px;
@@ -336,22 +371,14 @@ margin: 0px;
     text-align: left;
     padding-left: -4px;
     margin-left: 8px;
-    
   }
 
   .block-curces .img-flags-block img {
- 
     width: 23px;
     height: 36px;
     padding-top: 10px;
     padding-left: 0px;
-   
-   
-  
-    
   }
-
-
 
   .img-flags-block {
     position: absolute;
@@ -383,15 +410,11 @@ margin: 0px;
 
   .bottom-content-block ul.ul-smart img {
     position: relative;
-
   }
 
   .bottom-content-block .banks-text {
-   
     top: -7px;
-    
   }
-
 
   .switch-btn {
     display: inline-block;
@@ -424,7 +447,7 @@ margin: 0px;
     z-index: 1;
   }
   .switch-on {
-    background:  #ebebeb;
+    background: #ebebeb;
     /*box-shadow: inset 0 0 10px 0 #999999;  тень */
   }
   .switch-on::after {
@@ -432,31 +455,20 @@ margin: 0px;
     background: #fff;
   }
 
- 
+  .toggle-text {
+    margin-top: 6px;
 
+    height: 28px;
+    line-height: 28px;
+  }
 
+  .toggle-text .switch-btn span {
+    font-size: 13px;
 
-    .toggle-text {
-        
-      
-      margin-top: 6px;
-    
-      height: 28px;
-      line-height: 28px;
-    }
-    
-    .toggle-text .switch-btn span {
-      
-      font-size: 13px;
-     
-    
-      white-space: nowrap;
-        overflow: hidden;
-        position: relative;
-    
-        left: 7px; 
-    }
-    
-    
-   
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+
+    left: 7px;
+  }
 }
