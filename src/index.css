@@ -23,6 +23,16 @@ body {
   margin-bottom: 24px;
 }
 
+.text-second {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  text-align: left;
+  height: 54px;
+  max-width: 1380px;
+  margin: 0 auto;
+  margin-bottom: 0px;
+}
+
 .conteiner-flex {
   margin: 0 auto;
   max-width: 1380px;
@@ -33,7 +43,8 @@ body {
 
 .conteiner-second {
   display: grid;
-  grid-template-columns: 2fr 1fr 4fr;
+  grid-template-columns: 1fr 1fr 2fr;
+  text-align: center;
 }
 
 .conteiner-second-grid {
@@ -79,6 +90,7 @@ body {
 .map {
   height: 800px;
   width: 800px;
+  z-index: 200;
 }
 
 .buttonBanks {
@@ -159,6 +171,19 @@ body {
   position: relative;
   top: -6px;
   margin: 0px;
+}
+
+.ul-second {
+  margin-top: 34px;
+}
+
+.ul-second li {
+  margin-top: 12px;
+}
+
+.ul-second li ul {
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .toggle-text {
@@ -255,6 +280,9 @@ body {
   height: 36px;
   line-height: 36px;
 }
+.toggle-second {
+  display: none;
+}
 
 .toggle-text-second .switch-btn-second span {
   white-space: nowrap;
@@ -277,7 +305,7 @@ body {
   height: 36px; /* высота переключателя */
   border-radius: 12px; /* радиус скругления */
   background: #ebebeb; /* цвет фона */
-  z-index: 0;
+  z-index: 9999;
   margin: 0;
   padding: 0;
   border: none;
@@ -302,7 +330,13 @@ body {
   z-index: 1;
 }
 .switch-on-second {
-  background: #ebebeb;
+  /* Rectangle */
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08));
+  backdrop-filter: blur(20px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 12px;
+
   /*box-shadow: inset 0 0 10px 0 #999999; /* тень */
 }
 .switch-on-second::after {
@@ -333,8 +367,31 @@ body {
 @media screen and (max-width: 480px) {
   /* мобильные экраны */
 
+  .conteiner-second-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 178px 1fr;
+  }
+
   .conteiner-body-main {
     padding: 22px 20px;
+  }
+  .toggle-second {
+    display: block;
+    position: absolute;
+  }
+  .toggle-text-second {
+    margin-top: 20px;
+  }
+  .column1 {
+    padding: 22px 20px;
+  }
+
+  .column2 {
+    padding-top: 0px;
+  }
+
+  .ul-second {
+    margin-top: 87px;
   }
 
   .text {

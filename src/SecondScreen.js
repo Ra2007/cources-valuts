@@ -11,7 +11,7 @@ class SecondScreen extends Component {
     event.target.select();
   };
 
-  // complete
+  // complete;
   // componentDidMount = () => {
   //   var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
   //   inputfocus.focus();
@@ -472,7 +472,11 @@ class SecondScreen extends Component {
     let size2 = {
       width: `${calculationPairRate(item2, propss).length * 14 || 3 * 14}px`
     };
-    const mapState = { center: [53.902496, 27.561481], zoom: 13 };
+    const mapState = { center: [53.902496, 27.561481], zoom: 13, controls: [] };
+
+    const screenHeight = +window.innerHeight;
+    const screenWidth = +window.innerWidth;
+    console.log(` ${screenHeight}   :   ${screenWidth}`);
 
     return (
       <div className="conteiner-second-grid">
@@ -482,7 +486,7 @@ class SecondScreen extends Component {
               <img src={arrowLeft} alt="" /> Усе валюты
             </Link>
           </div>
-          <div className="text">
+          <div className="text-second">
             Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
           </div>
           <div className="conteiner-second">
@@ -563,15 +567,24 @@ class SecondScreen extends Component {
             </div>
           </div>
 
-          {/* <div className="toggle-second">
+          <div className="toggle-second">
             {this.toggleSecScr(propss.mapStatusScnScr)}
-          </div> */}
+          </div>
 
-          <ul>{this.displayBanksSecondScreen(bankiSecond.banks)}</ul>
+          <ul className="ul-second">
+            {!propss.mapStatusScnScr
+              ? this.displayBanksSecondScreen(bankiSecond.banks)
+              : ""}
+          </ul>
         </div>
 
         <section className="column2" id="conteiner-map">
-          {this.MyPlacemark(mapState)}
+          {console.log(screenWidth + " " + propss.mapStatusScnScr)}
+          {screenWidth > 480
+            ? this.MyPlacemark(mapState)
+            : propss.mapStatusScnScr
+              ? this.MyPlacemark(mapState)
+              : ""}
         </section>
       </div>
     );
