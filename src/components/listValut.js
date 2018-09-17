@@ -58,11 +58,11 @@ class ListValut extends Component {
   //   );
   // };
 
-  onClikSpisokBankov = e => {
-    console.log(document.getElementsByClassName("block-curces"));
-    this.props.handleActiveParBanks(e.currentTarget.dataset.value);
-    this.props.perehodBanks();
-  };
+  // onClikSpisokBankov = e => {
+  //   console.log(document.getElementsByClassName("block-curces"));
+  //   this.props.handleActiveParBanks(e.currentTarget.dataset.value);
+  //   this.props.perehodBanks();
+  // };
 
   // spisokBankov = item => {
   //   return (
@@ -286,26 +286,26 @@ class ListValut extends Component {
   //   );
   // };
 
-  displayBanksSecondScreen = bank => {
-    console.log(bank);
-    return sortingListBanks(bank).map(banki => {
-      return (
-        <li key={banki}>
-          {banki}
-          <ul>
-            {bank.map(item => {
-              if (banki == item.split(":")[1])
-                return (
-                  <li key={item.split(":")[2]}>
-                    {item.split(":")[4].split("к,")[1]}
-                  </li>
-                );
-            })}
-          </ul>
-        </li>
-      );
-    });
-  };
+  // displayBanksSecondScreen = bank => {
+  //   console.log(bank);
+  //   return sortingListBanks(bank).map(banki => {
+  //     return (
+  //       <li key={banki}>
+  //         {banki}
+  //         <ul>
+  //           {bank.map(item => {
+  //             if (banki == item.split(":")[1])
+  //               return (
+  //                 <li key={item.split(":")[2]}>
+  //                   {item.split(":")[4].split("к,")[1]}
+  //                 </li>
+  //               );
+  //           })}
+  //         </ul>
+  //       </li>
+  //     );
+  //   });
+  // };
 
   //     vivodTooStr = (item1, item2,bankiSecond) => {
   //         console.log('vivodToo', item2)
@@ -652,135 +652,135 @@ class ListValut extends Component {
 
   // second screen
 
-  secondScreenHtml = (item1, item2, bankiSecond, propss) => {
-    console.log("vivodToo", item2);
+  // secondScreenHtml = (item1, item2, bankiSecond, propss) => {
+  //   console.log("vivodToo", item2);
 
-    let size1 = {
-      width: `${calculationPairRate(item1, propss).length * 14 || 3 * 14}px`
-    };
-    let size2 = {
-      width: `${calculationPairRate(item2, propss).length * 14 || 3 * 14}px`
-    };
-    const mapState = { center: [53.902496, 27.561481], zoom: 13 };
+  //   let size1 = {
+  //     width: `${calculationPairRate(item1, propss).length * 14 || 3 * 14}px`
+  //   };
+  //   let size2 = {
+  //     width: `${calculationPairRate(item2, propss).length * 14 || 3 * 14}px`
+  //   };
+  //   const mapState = { center: [53.902496, 27.561481], zoom: 13 };
 
-    return (
-      <div className="conteiner-second-grid">
-        <div className="column1">
-          <div className="buttonBanks" onClick={propss.perehodBanks}>
-            <img src={arrowLeft} /> Усе валюты
-          </div>
-          <div className="text">
-            Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
-          </div>
-          <div className="conteiner-second">
-            <div
-              className={
-                propss.filter === item1.kodval
-                  ? "block-curces active"
-                  : "block-curces"
-              }
-              key={item1.id}
-            >
-              <div className="input-block">
-                <input
-                  type="text"
-                  style={size1}
-                  value={calculationPairRate(item1, propss)}
-                  id={item1.kodval}
-                  onChange={this.handleSetKolvo1}
-                  key={item1.id}
-                  data-value={item1.kodval}
-                  data={item1.price}
-                  onClick={
-                    propss.filter !== item1.kodval
-                      ? this.handleFilterChage
-                      : this.zaglushka
-                  }
-                  name={item1.id}
-                  ref={item1.kodval}
-                  onFocus={this.handleFocus}
-                />
-              </div>
+  //   return (
+  //     <div className="conteiner-second-grid">
+  //       <div className="column1">
+  //         <div className="buttonBanks" onClick={propss.perehodBanks}>
+  //           <img src={arrowLeft} /> Усе валюты
+  //         </div>
+  //         <div className="text">
+  //           Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
+  //         </div>
+  //         <div className="conteiner-second">
+  //           <div
+  //             className={
+  //               propss.filter === item1.kodval
+  //                 ? "block-curces active"
+  //                 : "block-curces"
+  //             }
+  //             key={item1.id}
+  //           >
+  //             <div className="input-block">
+  //               <input
+  //                 type="text"
+  //                 style={size1}
+  //                 value={calculationPairRate(item1, propss)}
+  //                 id={item1.kodval}
+  //                 onChange={this.handleSetKolvo1}
+  //                 key={item1.id}
+  //                 data-value={item1.kodval}
+  //                 data={item1.price}
+  //                 onClick={
+  //                   propss.filter !== item1.kodval
+  //                     ? this.handleFilterChage
+  //                     : this.zaglushka
+  //                 }
+  //                 name={item1.id}
+  //                 ref={item1.kodval}
+  //                 onFocus={this.handleFocus}
+  //               />
+  //             </div>
 
-              <div className="img-flags-block">
-                <img
-                  src={"/flags/" + item1.kodval + ".png"}
-                  className="rounded float-right"
-                  alt={item1.name}
-                  title={item1.name}
-                  data={item1.price}
-                  data-value={item1.kodval}
-                  onClick={this.clickFlagFocusInput}
-                />
-              </div>
-            </div>
+  //             <div className="img-flags-block">
+  //               <img
+  //                 src={"/flags/" + item1.kodval + ".png"}
+  //                 className="rounded float-right"
+  //                 alt={item1.name}
+  //                 title={item1.name}
+  //                 data={item1.price}
+  //                 data-value={item1.kodval}
+  //                 onClick={this.clickFlagFocusInput}
+  //               />
+  //             </div>
+  //           </div>
 
-            <span>=</span>
+  //           <span>=</span>
 
-            <div className="block-curces" key={item2.id}>
-              <div className="input-block">
-                <input
-                  type="text"
-                  style={size2}
-                  value={calculationPairRate(item2, propss)}
-                  id={item2.kodval}
-                  onChange={this.handleSetKolvo1}
-                  key={item2.id}
-                  data-value={item2.kodval}
-                  data={item2.price}
-                  onClick={this.zaglushka}
-                  name={item2.id}
-                  ref={item2.kodval}
-                  onFocus={this.handleFocus}
-                  disabled
-                />
-              </div>
+  //           <div className="block-curces" key={item2.id}>
+  //             <div className="input-block">
+  //               <input
+  //                 type="text"
+  //                 style={size2}
+  //                 value={calculationPairRate(item2, propss)}
+  //                 id={item2.kodval}
+  //                 onChange={this.handleSetKolvo1}
+  //                 key={item2.id}
+  //                 data-value={item2.kodval}
+  //                 data={item2.price}
+  //                 onClick={this.zaglushka}
+  //                 name={item2.id}
+  //                 ref={item2.kodval}
+  //                 onFocus={this.handleFocus}
+  //                 disabled
+  //               />
+  //             </div>
 
-              <div className="img-flags-block">
-                <img
-                  src={"/flags/" + item2.kodval + ".png"}
-                  className="rounded float-right"
-                  alt={item2.name}
-                  title={item2.name}
-                  data={item2.price}
-                  data-value={item2.kodval}
-                  //onClick={this.clickFlagFocusInput}
-                />
-              </div>
-            </div>
-          </div>
+  //             <div className="img-flags-block">
+  //               <img
+  //                 src={"/flags/" + item2.kodval + ".png"}
+  //                 className="rounded float-right"
+  //                 alt={item2.name}
+  //                 title={item2.name}
+  //                 data={item2.price}
+  //                 data-value={item2.kodval}
+  //                 //onClick={this.clickFlagFocusInput}
+  //               />
+  //             </div>
+  //           </div>
+  //         </div>
 
-          <ul>{this.displayBanksSecondScreen(bankiSecond.banks)}</ul>
-        </div>
+  //         <ul>{this.displayBanksSecondScreen(bankiSecond.banks)}</ul>
+  //       </div>
 
-        <div className="column2" id="conteiner-map">
-          {this.MyPlacemark(mapState)}
-        </div>
-      </div>
-    );
-  };
+  //       <div className="column2" id="conteiner-map">
+  //         {this.MyPlacemark(mapState)}
+  //       </div>
+  //     </div>
+  //   );
+  // };
 
-  MyPlacemark = mapState => (
-    <YMaps>
-      <Map state={mapState} width="100%" height="100%">
-        <Placemark
-          geometry={{
-            coordinates: [55.751574, 37.573856]
-          }}
-          properties={{
-            hintContent: "Собственный значок метки",
-            balloonContent: "Это красивая метка"
-          }}
-          options={{
-            iconLayout: "default#image",
-            iconImageHref: "images/myIcon.gif",
-            iconImageSize: [30, 42],
-            iconImageOffset: [-3, -42]
-          }}
-        />
-      </Map>
-    </YMaps>
-  );
+  // MyPlacemark = mapState => (
+  //   <YMaps>
+  //     <Map state={mapState} width="100%" height="100%">
+  //       <Placemark
+  //         geometry={{
+  //           coordinates: [55.751574, 37.573856]
+  //         }}
+  //         properties={{
+  //           hintContent: "Собственный значок метки",
+  //           balloonContent: "Это красивая метка"
+  //         }}
+  //         options={{
+  //           iconLayout: "default#image",
+  //           iconImageHref: "images/myIcon.gif",
+  //           iconImageSize: [30, 42],
+  //           iconImageOffset: [-3, -42]
+  //         }}
+  //       />
+  //     </Map>
+  //   </YMaps>
+  // );
 
   displayBanksSecondScreen = bank => {
     console.log(bank);
@@ -803,452 +803,452 @@ class ListValut extends Component {
     });
   };
 
-  secondScreen = () => {
-    switch (this.props.filter) {
-      case "byn":
-        switch (this.props.activePareBanks) {
-          case "usd_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[3],
-              this.props
-            );
-          case "eur_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[5],
-              this.props
-            );
-          case "gbp_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[7],
-              this.props.state.kursibanki[7],
-              this.props
-            );
-          case "chf_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[9],
-              this.props.state.kursibanki[9],
-              this.props
-            );
-          case "rub_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[11],
-              this.props
-            );
-          case "uah_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[13],
-              this.props.state.kursibanki[13],
-              this.props
-            );
-          case "pln_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[15],
-              this.props.state.kursibanki[15],
-              this.props
-            );
-          case "czk_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[17],
-              this.props.state.kursibanki[17],
-              this.props
-            );
-          case "kzt_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[19],
-              this.props.state.kursibanki[19],
-              this.props
-            );
-          case "cny_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[21],
-              this.props.state.kursibanki[21],
-              this.props
-            );
+  // secondScreen = () => {
+  //   switch (this.props.filter) {
+  //     case "byn":
+  //       switch (this.props.activePareBanks) {
+  //         case "usd_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[3],
+  //             this.props
+  //           );
+  //         case "eur_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[5],
+  //             this.props
+  //           );
+  //         case "gbp_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[7],
+  //             this.props.state.kursibanki[7],
+  //             this.props
+  //           );
+  //         case "chf_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[9],
+  //             this.props.state.kursibanki[9],
+  //             this.props
+  //           );
+  //         case "rub_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[11],
+  //             this.props
+  //           );
+  //         case "uah_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[13],
+  //             this.props.state.kursibanki[13],
+  //             this.props
+  //           );
+  //         case "pln_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[15],
+  //             this.props.state.kursibanki[15],
+  //             this.props
+  //           );
+  //         case "czk_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[17],
+  //             this.props.state.kursibanki[17],
+  //             this.props
+  //           );
+  //         case "kzt_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[19],
+  //             this.props.state.kursibanki[19],
+  //             this.props
+  //           );
+  //         case "cny_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[21],
+  //             this.props.state.kursibanki[21],
+  //             this.props
+  //           );
 
-          case "usd_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[2],
-              this.props
-            );
-          case "eur_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[4],
-              this.props
-            );
-          case "gbp_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[6],
-              this.props.state.kursibanki[6],
-              this.props
-            );
-          case "chf_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[8],
-              this.props.state.kursibanki[8],
-              this.props
-            );
-          case "rub_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[10],
-              this.props
-            );
-          case "uah_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[12],
-              this.props.state.kursibanki[12],
-              this.props
-            );
-          case "pln_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[14],
-              this.props.state.kursibanki[14],
-              this.props
-            );
-          case "czk_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[16],
-              this.props.state.kursibanki[16],
-              this.props
-            );
-          case "kzt_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[18],
-              this.props.state.kursibanki[18],
-              this.props
-            );
-          case "cny_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[20],
-              this.props.state.kursibanki[20],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "usd_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[2],
+  //             this.props
+  //           );
+  //         case "eur_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[4],
+  //             this.props
+  //           );
+  //         case "gbp_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[6],
+  //             this.props.state.kursibanki[6],
+  //             this.props
+  //           );
+  //         case "chf_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[8],
+  //             this.props.state.kursibanki[8],
+  //             this.props
+  //           );
+  //         case "rub_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[10],
+  //             this.props
+  //           );
+  //         case "uah_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[12],
+  //             this.props.state.kursibanki[12],
+  //             this.props
+  //           );
+  //         case "pln_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[14],
+  //             this.props.state.kursibanki[14],
+  //             this.props
+  //           );
+  //         case "czk_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[16],
+  //             this.props.state.kursibanki[16],
+  //             this.props
+  //           );
+  //         case "kzt_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[18],
+  //             this.props.state.kursibanki[18],
+  //             this.props
+  //           );
+  //         case "cny_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[20],
+  //             this.props.state.kursibanki[20],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "usd":
-        switch (this.props.activePareBanks) {
-          case "usd_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[3],
-              this.props
-            );
-          case "eur_usd_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[23],
-              this.props
-            );
-          case "usd_rub_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[27],
-              this.props
-            );
+  //     case "usd":
+  //       switch (this.props.activePareBanks) {
+  //         case "usd_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[3],
+  //             this.props
+  //           );
+  //         case "eur_usd_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[23],
+  //             this.props
+  //           );
+  //         case "usd_rub_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[27],
+  //             this.props
+  //           );
 
-          case "usd_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[2],
-              this.props
-            );
-          case "eur_usd_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[22],
-              this.props
-            );
-          case "usd_rub_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[26],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "usd_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[2],
+  //             this.props
+  //           );
+  //         case "eur_usd_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[22],
+  //             this.props
+  //           );
+  //         case "usd_rub_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[26],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "eur":
-        switch (this.props.activePareBanks) {
-          case "eur_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[5],
-              this.props
-            );
-          case "eur_usd_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[23],
-              this.props
-            );
-          case "eur_rub_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[25],
-              this.props
-            );
+  //     case "eur":
+  //       switch (this.props.activePareBanks) {
+  //         case "eur_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[5],
+  //             this.props
+  //           );
+  //         case "eur_usd_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[23],
+  //             this.props
+  //           );
+  //         case "eur_rub_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[25],
+  //             this.props
+  //           );
 
-          case "eur_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[4],
-              this.props
-            );
-          case "eur_usd_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[22],
-              this.props
-            );
-          case "eur_rub_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[24],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "eur_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[4],
+  //             this.props
+  //           );
+  //         case "eur_usd_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[22],
+  //             this.props
+  //           );
+  //         case "eur_rub_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[24],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "gbp":
-        switch (this.props.activePareBanks) {
-          case "gbp_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[6],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[7],
-              this.props
-            );
+  //     case "gbp":
+  //       switch (this.props.activePareBanks) {
+  //         case "gbp_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[6],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[7],
+  //             this.props
+  //           );
 
-          case "gbp_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[7],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[6],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "gbp_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[7],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[6],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "chf":
-        switch (this.props.activePareBanks) {
-          case "chf_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[8],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[9],
-              this.props
-            );
+  //     case "chf":
+  //       switch (this.props.activePareBanks) {
+  //         case "chf_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[8],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[9],
+  //             this.props
+  //           );
 
-          case "chf_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[9],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[8],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "chf_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[9],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[8],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "rub":
-        switch (this.props.activePareBanks) {
-          case "rub_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[11],
-              this.props
-            );
-          case "usd_rub_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[2],
-              this.props.state.kursibanki[27],
-              this.props
-            );
-          case "eur_rub_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[10],
-              this.props.state.kursibanki[4],
-              this.props.state.kursibanki[25],
-              this.props
-            );
+  //     case "rub":
+  //       switch (this.props.activePareBanks) {
+  //         case "rub_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[11],
+  //             this.props
+  //           );
+  //         case "usd_rub_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[2],
+  //             this.props.state.kursibanki[27],
+  //             this.props
+  //           );
+  //         case "eur_rub_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[10],
+  //             this.props.state.kursibanki[4],
+  //             this.props.state.kursibanki[25],
+  //             this.props
+  //           );
 
-          case "rub_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[10],
-              this.props
-            );
-          case "usd_rub_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[3],
-              this.props.state.kursibanki[26],
-              this.props
-            );
-          case "eur_rub_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[11],
-              this.props.state.kursibanki[5],
-              this.props.state.kursibanki[24],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "rub_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[10],
+  //             this.props
+  //           );
+  //         case "usd_rub_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[3],
+  //             this.props.state.kursibanki[26],
+  //             this.props
+  //           );
+  //         case "eur_rub_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[11],
+  //             this.props.state.kursibanki[5],
+  //             this.props.state.kursibanki[24],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "uah":
-        switch (this.props.activePareBanks) {
-          case "uah_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[12],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[13],
-              this.props
-            );
+  //     case "uah":
+  //       switch (this.props.activePareBanks) {
+  //         case "uah_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[12],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[13],
+  //             this.props
+  //           );
 
-          case "uah_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[13],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[12],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "uah_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[13],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[12],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "pln":
-        switch (this.props.activePareBanks) {
-          case "pln_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[14],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[15],
-              this.props
-            );
+  //     case "pln":
+  //       switch (this.props.activePareBanks) {
+  //         case "pln_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[14],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[15],
+  //             this.props
+  //           );
 
-          case "pln_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[15],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[14],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "pln_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[15],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[14],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "czk":
-        switch (this.props.activePareBanks) {
-          case "czk_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[16],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[16],
-              this.props
-            );
+  //     case "czk":
+  //       switch (this.props.activePareBanks) {
+  //         case "czk_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[16],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[16],
+  //             this.props
+  //           );
 
-          case "czk_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[17],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[17],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "czk_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[17],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[17],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "kzt":
-        switch (this.props.activePareBanks) {
-          case "kzt_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[18],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[19],
-              this.props
-            );
+  //     case "kzt":
+  //       switch (this.props.activePareBanks) {
+  //         case "kzt_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[18],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[19],
+  //             this.props
+  //           );
 
-          case "kzt_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[19],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[18],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "kzt_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[19],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[18],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      case "cny":
-        switch (this.props.activePareBanks) {
-          case "cny_byn_sell":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[20],
-              this.props.state.kursibanki[0],
-              this.props.state.kursibanki[21],
-              this.props
-            );
+  //     case "cny":
+  //       switch (this.props.activePareBanks) {
+  //         case "cny_byn_sell":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[20],
+  //             this.props.state.kursibanki[0],
+  //             this.props.state.kursibanki[21],
+  //             this.props
+  //           );
 
-          case "cny_byn_buy":
-            return this.secondScreenHtml(
-              this.props.state.kursibanki[21],
-              this.props.state.kursibanki[1],
-              this.props.state.kursibanki[20],
-              this.props
-            );
-          default:
-        }
-        break;
+  //         case "cny_byn_buy":
+  //           return this.secondScreenHtml(
+  //             this.props.state.kursibanki[21],
+  //             this.props.state.kursibanki[1],
+  //             this.props.state.kursibanki[20],
+  //             this.props
+  //           );
+  //         default:
+  //       }
+  //       break;
 
-      default:
-    }
-  };
+  //     default:
+  //   }
+  // };
 
   render() {
     return (

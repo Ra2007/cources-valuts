@@ -481,103 +481,104 @@ class SecondScreen extends Component {
     return (
       <div className="conteiner-second-grid">
         <div className="column1">
-          <div className="buttonBanks" onClick={propss.perehodBanks}>
-            <Link to={`/`}>
-              <img src={arrowLeft} alt="" /> Усе валюты
-            </Link>
-          </div>
-          <div className="text-second">
-            Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
-          </div>
-          <div className="conteiner-second">
-            <div
-              className={
-                propss.filter === item1.kodval
-                  ? "block-curces active"
-                  : "block-curces"
-              }
-              key={item1.id}
-            >
-              <div className="input-block">
-                <input
-                  type="text"
-                  style={size1}
-                  value={calculationPairRate(item1, propss)}
-                  id={item1.kodval}
-                  onChange={this.handleSetQntMnl}
-                  key={item1.id}
-                  data-value={item1.kodval}
-                  data={item1.price}
-                  onClick={
-                    propss.filter !== item1.kodval
-                      ? this.handleFilterChage
-                      : this.zaglushka
-                  }
-                  name={item1.id}
-                  ref={item1.kodval}
-                  onFocus={this.handleFocus}
-                />
+          <div className="column1-child">
+            <div className="buttonBanks" onClick={propss.perehodBanks}>
+              <Link to={`/`}>
+                <img src={arrowLeft} alt="" /> Усе валюты
+              </Link>
+            </div>
+            <div className="text-second">
+              Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
+            </div>
+            <div className="conteiner-second">
+              <div
+                className={
+                  propss.filter === item1.kodval
+                    ? "block-curces active"
+                    : "block-curces"
+                }
+                key={item1.id}
+              >
+                <div className="input-block">
+                  <input
+                    type="text"
+                    style={size1}
+                    value={calculationPairRate(item1, propss)}
+                    id={item1.kodval}
+                    onChange={this.handleSetQntMnl}
+                    key={item1.id}
+                    data-value={item1.kodval}
+                    data={item1.price}
+                    onClick={
+                      propss.filter !== item1.kodval
+                        ? this.handleFilterChage
+                        : this.zaglushka
+                    }
+                    name={item1.id}
+                    ref={item1.kodval}
+                    onFocus={this.handleFocus}
+                  />
+                </div>
+
+                <div className="img-flags-block">
+                  <img
+                    src={"/flags/" + item1.kodval + ".png"}
+                    className="rounded float-right"
+                    alt={item1.name}
+                    title={item1.name}
+                    data={item1.price}
+                    data-value={item1.kodval}
+                    onClick={this.clickFlagFocusInput}
+                  />
+                </div>
               </div>
 
-              <div className="img-flags-block">
-                <img
-                  src={"/flags/" + item1.kodval + ".png"}
-                  className="rounded float-right"
-                  alt={item1.name}
-                  title={item1.name}
-                  data={item1.price}
-                  data-value={item1.kodval}
-                  onClick={this.clickFlagFocusInput}
-                />
+              <span className="span-second-center">=</span>
+
+              <div className="block-curces" key={item2.id}>
+                <div className="input-block">
+                  <input
+                    type="text"
+                    style={size2}
+                    value={calculationPairRate(item2, propss)}
+                    id={item2.kodval}
+                    onChange={this.handleSetKolvo1}
+                    key={item2.id}
+                    data-value={item2.kodval}
+                    data={item2.price}
+                    onClick={this.zaglushka}
+                    name={item2.id}
+                    ref={item2.kodval}
+                    onFocus={this.handleFocus}
+                    disabled
+                  />
+                </div>
+
+                <div className="img-flags-block">
+                  <img
+                    src={"/flags/" + item2.kodval + ".png"}
+                    className="rounded float-right"
+                    alt={item2.name}
+                    title={item2.name}
+                    data={item2.price}
+                    data-value={item2.kodval}
+                    //onClick={this.clickFlagFocusInput}
+                  />
+                </div>
               </div>
             </div>
 
-            <span>=</span>
-
-            <div className="block-curces" key={item2.id}>
-              <div className="input-block">
-                <input
-                  type="text"
-                  style={size2}
-                  value={calculationPairRate(item2, propss)}
-                  id={item2.kodval}
-                  onChange={this.handleSetKolvo1}
-                  key={item2.id}
-                  data-value={item2.kodval}
-                  data={item2.price}
-                  onClick={this.zaglushka}
-                  name={item2.id}
-                  ref={item2.kodval}
-                  onFocus={this.handleFocus}
-                  disabled
-                />
-              </div>
-
-              <div className="img-flags-block">
-                <img
-                  src={"/flags/" + item2.kodval + ".png"}
-                  className="rounded float-right"
-                  alt={item2.name}
-                  title={item2.name}
-                  data={item2.price}
-                  data-value={item2.kodval}
-                  //onClick={this.clickFlagFocusInput}
-                />
-              </div>
+            <div className="toggle-second">
+              {this.toggleSecScr(propss.mapStatusScnScr)}
             </div>
-          </div>
 
-          <div className="toggle-second">
-            {this.toggleSecScr(propss.mapStatusScnScr)}
+            <ul className="ul-second">
+              {!propss.mapStatusScnScr
+                ? this.displayBanksSecondScreen(bankiSecond.banks)
+                : ""}
+            </ul>
           </div>
-
-          <ul className="ul-second">
-            {!propss.mapStatusScnScr
-              ? this.displayBanksSecondScreen(bankiSecond.banks)
-              : ""}
-          </ul>
         </div>
-
         <section className="column2" id="conteiner-map">
           {console.log(screenWidth + " " + propss.mapStatusScnScr)}
           {screenWidth > 480
@@ -639,7 +640,9 @@ class SecondScreen extends Component {
     return sortingListBanks(bank).map(banki => {
       return (
         <li key={banki}>
+          {this.bankImgView(banki)}
           {banki}
+          {console.log("banks", banki)}
           <ul>
             {bank.map(item => {
               if (banki === item.split(":")[1])
@@ -653,6 +656,10 @@ class SecondScreen extends Component {
         </li>
       );
     });
+  };
+
+  bankImgView = bank => {
+    return <img src={"/bankslogo/" + bank + ".png"} />;
   };
 
   render() {

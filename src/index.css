@@ -56,6 +56,10 @@ body {
 
 .column1 {
   padding: 36px 40px;
+  width: 100%;
+  float: left;
+  height: 100vh;
+  overflow: auto;
 }
 
 .column2 section {
@@ -91,6 +95,11 @@ body {
   height: 800px;
   width: 800px;
   z-index: 200;
+}
+
+.ul-second img {
+  margin-right: 16px;
+  margin-bottom: -2px;
 }
 
 .buttonBanks {
@@ -154,6 +163,10 @@ body {
   height: 33px;
   padding-top: 7px;
   padding-left: 8px;
+}
+
+.span-second-center {
+  padding-top: 7px;
 }
 
 .input-flag-button {
@@ -347,9 +360,25 @@ body {
 /* Стили адаптивности */
 
 @media (min-width: 1681px) and (max-width: 2500px) {
+  .column1 {
+    overflow: auto;
+    transform: scaleX(-1);
+  }
+
+  .column1-child {
+    transform: scaleX(-1);
+  }
 }
 
 @media (min-width: 1281px) and (max-width: 1680px) {
+  .column1 {
+    overflow: auto;
+    transform: scaleX(-1);
+  }
+
+  .column1-child {
+    transform: scaleX(-1);
+  }
 }
 
 @media (min-width: 481px) and (max-width: 1280px) {
@@ -361,6 +390,15 @@ body {
 
   .text {
     margin-bottom: 24px;
+  }
+
+  .column1 {
+    overflow: auto;
+    transform: scaleX(-1);
+  }
+
+  .column1-child {
+    transform: scaleX(-1);
   }
 }
 
