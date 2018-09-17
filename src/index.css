@@ -360,25 +360,9 @@ body {
 /* Стили адаптивности */
 
 @media (min-width: 1681px) and (max-width: 2500px) {
-  .column1 {
-    overflow: auto;
-    transform: scaleX(-1);
-  }
-
-  .column1-child {
-    transform: scaleX(-1);
-  }
 }
 
 @media (min-width: 1281px) and (max-width: 1680px) {
-  .column1 {
-    overflow: auto;
-    transform: scaleX(-1);
-  }
-
-  .column1-child {
-    transform: scaleX(-1);
-  }
 }
 
 @media (min-width: 481px) and (max-width: 1280px) {
@@ -390,15 +374,6 @@ body {
 
   .text {
     margin-bottom: 24px;
-  }
-
-  .column1 {
-    overflow: auto;
-    transform: scaleX(-1);
-  }
-
-  .column1-child {
-    transform: scaleX(-1);
   }
 }
 
