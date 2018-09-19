@@ -4,6 +4,8 @@ import { Switch, Route } from "react-router-dom";
 import { dataApi } from "./data/dataAppp";
 import { firstScreenCN } from "./data/firstScreenСurrencyName";
 import { secondScreenCNActiv } from "./data/secondScreenСurrencyNameActive";
+import { banksNameBel } from "./data/banksNameBel";
+import { banksLogoImg } from "./data/banksLogoImg";
 import SecondScreen from "./SecondScreen";
 import FirstScreen from "./FirstScreen";
 
@@ -20,6 +22,8 @@ class App extends Component {
       coursesBanksArray: dataApi,
       firstScreenCN: firstScreenCN,
       secondScreenCNActiv: secondScreenCNActiv,
+      banksNameBel: banksNameBel,
+      banksLogoImg: banksLogoImg,
       mapStatusScnScr: false,
       changeMapStatusScnScrST: () => this.changeMapStatusScnScr(),
       handleActivPriceST: price => this.handleActivPrice(price),

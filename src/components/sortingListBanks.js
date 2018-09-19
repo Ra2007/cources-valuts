@@ -2,7 +2,7 @@ const sortingListBanks = arr => {
   var obj = [];
   for (var i = 0; i < arr.length; i++) {
     var str = arr[i];
-    var tls = str.split(":")[1];
+    var tls = str.split(":")[0];
     obj[i] = tls;
   }
   var arreys = unique(obj);

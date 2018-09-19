@@ -257,7 +257,9 @@ class FirstScreen extends Component {
           {sortingListBanks(item.banks).map(item => {
             return (
               <li key={item}>
-                <Link to={`/details`}>{item} </Link>
+                <Link to={`/details`}>
+                  {this.props.state.banksNameBel[item]}{" "}
+                </Link>
               </li>
             );
           })}

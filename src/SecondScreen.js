@@ -649,12 +649,15 @@ class SecondScreen extends Component {
     return sortingListBanks(bank).map(banki => {
       return (
         <li key={banki}>
-          {this.bankImgView(banki)}
-          {banki}
+          <img
+            src={"/bankslogo/" + this.props.state.banksLogoImg[banki]}
+            alt=""
+          />
+          {this.props.state.banksNameBel[banki]}
 
           <ul>
             {bank.map(item => {
-              if (banki === item.split(":")[1])
+              if (banki === item.split(":")[0])
                 return (
                   <li key={item.split(":")[2]}>
                     {item.split(":")[4].split("к,")[1]}
@@ -665,10 +668,6 @@ class SecondScreen extends Component {
         </li>
       );
     });
-  };
-
-  bankImgView = bank => {
-    return <img src={"/bankslogo/" + bank + ".png"} alt="" />;
   };
 
   render() {
