@@ -1,5 +1,3 @@
-import React from "react";
-
 const calculationPairRate = (item, propss) => {
   switch (propss.activeCurrencyCode) {
     case "byn":

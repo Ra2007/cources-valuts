@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { Switch, Route } from "react-router-dom";
 import { dataApi } from "./data/dataAppp";
+import { firstScreenCN } from "./data/firstScreenСurrencyName";
+import { secondScreenCNActiv } from "./data/secondScreenСurrencyNameActive";
 import SecondScreen from "./SecondScreen";
 import FirstScreen from "./FirstScreen";
 
@@ -16,6 +18,8 @@ class App extends Component {
       viewBankList: false,
       activePareBanks: "eur_byn_buy",
       coursesBanksArray: dataApi,
+      firstScreenCN: firstScreenCN,
+      secondScreenCNActiv: secondScreenCNActiv,
       mapStatusScnScr: false,
       changeMapStatusScnScrST: () => this.changeMapStatusScnScr(),
       handleActivPriceST: price => this.handleActivPrice(price),
@@ -50,14 +54,12 @@ class App extends Component {
     this.setState({
       mapStatusScnScr: !this.state.mapStatusScnScr
     });
-    console.log("status map ", this.state.mapStatusScnScr);
   };
 
   handleActiveParBanks = para => {
     this.setState({
       activePareBanks: para
     });
-    console.log("11", this.state.activePareBanks);
   };
 
   handleSetQnt = qnt => {

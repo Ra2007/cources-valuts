@@ -277,7 +277,6 @@ class FirstScreen extends Component {
   };
 
   onClikSpisokBankov = e => {
-    console.log(e.currentTarget.dataset.value);
     this.props.state.handleActiveParBanksST(e.currentTarget.dataset.value);
   };
 
@@ -313,7 +312,17 @@ class FirstScreen extends Component {
     return (
       <div className="conteiner-body-main">
         <div className="text">
-          <p>Лепшы курс каб набыць беларускія рублі ў Мінску</p>
+          <p>
+            Лепшы курс каб{" "}
+            {
+              this.props.state.firstScreenCN[
+                `${this.props.state.activeCurrencyCode}_${
+                  this.props.state.buyStatus
+                }`
+              ]
+            }{" "}
+            ў Мінску
+          </p>
         </div>
         <div className="conteiner-flex">
           {coursesBanksArray.map(item => {

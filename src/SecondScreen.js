@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
+
 import arrowLeft from "./arrowLeft.svg";
 import { YMaps, Map, Placemark } from "react-yandex-maps";
 import calculationPairRate from "./components/calculationPairRate";
@@ -464,8 +464,6 @@ class SecondScreen extends Component {
   };
 
   secondScreenHtml = (item1, item2, bankiSecond, propss) => {
-    console.log("vivodToo", item2);
-
     let size1 = {
       width: `${calculationPairRate(item1, propss).length * 14 || 3 * 14}px`
     };
@@ -474,9 +472,7 @@ class SecondScreen extends Component {
     };
     const mapState = { center: [53.902496, 27.561481], zoom: 13, controls: [] };
 
-    const screenHeight = +window.innerHeight;
     const screenWidth = +window.innerWidth;
-    console.log(` ${screenHeight}   :   ${screenWidth}`);
 
     return (
       <div className="conteiner-second-grid">
@@ -488,7 +484,22 @@ class SecondScreen extends Component {
               </Link>
             </div>
             <div className="text-second">
-              Дзе набыць беларускія рублі за расейскія рублі па лепшым курсе
+              Дзе {this.props.state.buyStatus === "buy" ? "набыць" : "абмяняць"}{" "}
+              {
+                this.props.state.secondScreenCNActiv[
+                  this.props.state.activeCurrencyCode
+                ]
+              }{" "}
+              {this.props.state.buyStatus === "buy" ? "за" : "на"}{" "}
+              {
+                this.props.state.secondScreenCNActiv[
+                  this.props.state.activePareBanks.split("_")[0] ===
+                  this.props.state.activeCurrencyCode
+                    ? this.props.state.activePareBanks.split("_")[1]
+                    : this.props.state.activePareBanks.split("_")[0]
+                ]
+              }{" "}
+              па лепшым курсе
             </div>
             <div className="conteiner-second">
               <div
@@ -580,7 +591,6 @@ class SecondScreen extends Component {
           </div>
         </div>
         <section className="column2" id="conteiner-map">
-          {console.log(screenWidth + " " + propss.mapStatusScnScr)}
           {screenWidth > 480
             ? this.MyPlacemark(mapState)
             : propss.mapStatusScnScr
@@ -636,13 +646,12 @@ class SecondScreen extends Component {
   );
 
   displayBanksSecondScreen = bank => {
-    console.log(bank);
     return sortingListBanks(bank).map(banki => {
       return (
         <li key={banki}>
           {this.bankImgView(banki)}
           {banki}
-          {console.log("banks", banki)}
+
           <ul>
             {bank.map(item => {
               if (banki === item.split(":")[1])
@@ -659,7 +668,7 @@ class SecondScreen extends Component {
   };
 
   bankImgView = bank => {
-    return <img src={"/bankslogo/" + bank + ".png"} />;
+    return <img src={"/bankslogo/" + bank + ".png"} alt="" />;
   };
 
   render() {
