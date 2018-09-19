@@ -652,6 +652,8 @@ class SecondScreen extends Component {
           <img
             src={"/bankslogo/" + this.props.state.banksLogoImg[banki]}
             alt=""
+            height="16"
+            width="16"
           />
           {this.props.state.banksNameBel[banki]}
 
