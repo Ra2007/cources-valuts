@@ -269,7 +269,9 @@ class FirstScreen extends Component {
           {
             <li key={sortingListBanks(item.banks)[0]}>
               {/* <a href="/details">{sortingListBanks(item.banks)[0]} </a>{" "} */}
-              <Link to={`/details`}>{sortingListBanks(item.banks)[0]} </Link>
+              <Link to={`/details`}>
+                {this.props.state.banksNameBel[sortingListBanks(item.banks)[0]]}{" "}
+              </Link>
               <img src={uk} alt="logo" className="logoHeader" />
             </li>
           }
