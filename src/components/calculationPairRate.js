@@ -1,4 +1,6 @@
 const calculationPairRate = (item, propss) => {
+  console.log("ITEM", item);
+  console.log("PROPS", propss);
   switch (propss.activeCurrencyCode) {
     case "byn":
       return propss.activeCurrencyCode === item.kodval
@@ -8,7 +10,14 @@ const calculationPairRate = (item, propss) => {
     case "usd":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[3].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[2].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return propss.amountCurrency;
         case "eur":
@@ -66,7 +75,14 @@ const calculationPairRate = (item, propss) => {
     case "eur":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[5].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[4].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return item.kodpara.split("_")[2] === "buy"
             ? (
@@ -127,7 +143,14 @@ const calculationPairRate = (item, propss) => {
     case "gbp":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[7].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[6].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -182,7 +205,14 @@ const calculationPairRate = (item, propss) => {
     case "chf":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[9].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[8].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -237,7 +267,14 @@ const calculationPairRate = (item, propss) => {
     case "rub":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[11].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[10].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -292,7 +329,14 @@ const calculationPairRate = (item, propss) => {
     case "uah":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[13].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[12].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -347,7 +391,14 @@ const calculationPairRate = (item, propss) => {
     case "pln":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[15].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[14].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -402,7 +453,14 @@ const calculationPairRate = (item, propss) => {
     case "czk":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[17].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[16].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -457,7 +515,14 @@ const calculationPairRate = (item, propss) => {
     case "kzt":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[19].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[18].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
@@ -512,7 +577,14 @@ const calculationPairRate = (item, propss) => {
     case "cny":
       switch (item.kodval) {
         case "byn":
-          return (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
+          return item.kodpara.split("_")[2] === "buy"
+            ? (
+                propss.amountCurrency * propss.coursesBanksArray[20].price
+              ).toFixed(2)
+            : (
+                propss.amountCurrency * propss.coursesBanksArray[21].price
+              ).toFixed(2);
+        // (propss.amountCurrency * propss.activPriceBuy).toFixed(2);
         case "usd":
           return (
             (propss.amountCurrency * propss.activPriceBuy) /
