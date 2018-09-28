@@ -1,6 +1,4 @@
 const calculationPairRate = (item, propss) => {
-  console.log("ITEM", item);
-  console.log("PROPS", propss);
   switch (propss.activeCurrencyCode) {
     case "byn":
       return propss.activeCurrencyCode === item.kodval

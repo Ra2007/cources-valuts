@@ -6,7 +6,8 @@ import { firstScreenCN } from "./data/firstScreenСurrencyName";
 import { secondScreenCNActiv } from "./data/secondScreenСurrencyNameActive";
 import { banksNameBel } from "./data/banksNameBel";
 import { banksLogoImg } from "./data/banksLogoImg";
-import SecondScreen from "./SecondScreen";
+import SecondScreenBuy from "./SecondScreenBuy";
+import SecondScreenSell from "./SecondScreenSell";
 import FirstScreen from "./FirstScreen";
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
     super();
     this.state = {
       activeCurrencyCode: "byn",
-      amountCurrency: 100,
+      amountCurrency: 2.058,
       activPriceBuy: 1,
       buyStatus: "buy",
       viewBankList: false,
@@ -33,13 +34,18 @@ class App extends Component {
       changeToggleST: ClsBtn => this.changeToggle(ClsBtn),
       handleActiveParBanksST: para => this.handleActiveParBanks(para)
     };
+
+    this.state.amountCurrency = this.state.coursesBanksArray[3].price.toFixed(
+      2
+    );
+
+    // this.state.activPriceBuy = this.state.coursesBanksArray[3].price;
   }
 
   handleActivPrice = price => {
     this.setState({
       activPriceBuy: price
     });
-    console.log(this.state.activPriceBuy);
   };
 
   izmstst = () => {
@@ -99,8 +105,12 @@ class App extends Component {
           render={props => <FirstScreen {...props} state={this.state} />}
         />
         <Route
-          path="/details"
-          render={props => <SecondScreen {...props} state={this.state} />}
+          path="/buy"
+          render={props => <SecondScreenBuy {...props} state={this.state} />}
+        />
+        <Route
+          path="/sell"
+          render={props => <SecondScreenSell {...props} state={this.state} />}
         />
       </Switch>
     );

@@ -7,17 +7,22 @@ import sortingListBanks from "./components/sortingListBanks";
 import uk from "./picture.svg";
 
 class FirstScreen extends Component {
-  // complete
+  // constructor() {
+  //   super();
+  //   this.props.state.amountCurrency =
+  //     this.props.state.buyStatus == "buy"
+  //       ? this.props.state.coursesBanksArray[3].price
+  //       : this.props.state.coursesBanksArray[2].price;
+  // }
   handleFocus = event => {
     event.target.select();
   };
 
-  // complete
   componentDidMount = () => {
     var inputfocus = ReactDOM.findDOMNode(this.refs.byn);
     inputfocus.focus();
   };
-  // complete
+
   handleFilterChage = e => {
     const valact11 = e.currentTarget.dataset.value;
     this.props.state.handleActivPriceST(Object.values(e.currentTarget)[1].data);
@@ -29,7 +34,7 @@ class FirstScreen extends Component {
   vivodpari = item => {
     let size = {
       width: `${calculationPairRate(item, this.props.state).length * 14 ||
-        3 * 14}px`
+        5 * 14}px`
     };
 
     return (
@@ -44,7 +49,6 @@ class FirstScreen extends Component {
         <div className="input-block">
           <input
             type="text"
-            //  size={this.raschetprice(item).length-1 || 3}
             style={size}
             value={calculationPairRate(item, this.props.state)}
             id={item.kodval}
@@ -233,31 +237,39 @@ class FirstScreen extends Component {
     }
   };
 
-  // changeToggle = classBtn => {
-  //   if (classBtn === "switch-btn switch-on") {
-  //     this.setState({
-  //       buystatus: "sell"
-  //     });
-  //   } else {
-  //     this.setState({
-  //       buystatus: "buy"
-  //     });
-  //   }
-  // };
-
-  spisokBankov = item => {
+  spisokBankov = item1 => {
     return (
       <div
         className="banks-text"
         onClick={this.onClikSpisokBankov}
-        data-value={item.kodpara}
+        data-value={item1.kodpara}
       >
         <ul className="ul-desktop">
           {" "}
-          {sortingListBanks(item.banks).map(item => {
+          {sortingListBanks(item1.banks).map(item => {
             return (
               <li key={item}>
-                <Link to={`/details`}>
+                <Link
+                  to={
+                    this.props.state.buyStatus === "buy"
+                      ? `/buy/${this.props.state.amountCurrency}${
+                          this.props.state.activeCurrencyCode
+                        }-${
+                          this.props.state.activeCurrencyCode ===
+                          item1.kodpara.split("_")[0]
+                            ? item1.kodpara.split("_")[1]
+                            : item1.kodpara.split("_")[0]
+                        }`
+                      : `/sell/${this.props.state.amountCurrency}${
+                          this.props.state.activeCurrencyCode
+                        }-${
+                          this.props.state.activeCurrencyCode ===
+                          item1.kodpara.split("_")[0]
+                            ? item1.kodpara.split("_")[1]
+                            : item1.kodpara.split("_")[0]
+                        }`
+                  }
+                >
                   {this.props.state.banksNameBel[item]}{" "}
                 </Link>
               </li>
@@ -267,10 +279,33 @@ class FirstScreen extends Component {
 
         <ul className="ul-smart">
           {
-            <li key={sortingListBanks(item.banks)[0]}>
-              {/* <a href="/details">{sortingListBanks(item.banks)[0]} </a>{" "} */}
-              <Link to={`/details`}>
-                {this.props.state.banksNameBel[sortingListBanks(item.banks)[0]]}{" "}
+            <li key={sortingListBanks(item1.banks)[0]}>
+              <Link
+                to={
+                  this.props.state.buyStatus === "buy"
+                    ? `/buy/${this.props.state.amountCurrency}${
+                        this.props.state.activeCurrencyCode
+                      }-${
+                        this.props.state.activeCurrencyCode ===
+                        item1.kodpara.split("_")[0]
+                          ? item1.kodpara.split("_")[1]
+                          : item1.kodpara.split("_")[0]
+                      }`
+                    : `/sell/${this.props.state.amountCurrency}${
+                        this.props.state.activeCurrencyCode
+                      }-${
+                        this.props.state.activeCurrencyCode ===
+                        item1.kodpara.split("_")[0]
+                          ? item1.kodpara.split("_")[1]
+                          : item1.kodpara.split("_")[0]
+                      }`
+                }
+              >
+                {
+                  this.props.state.banksNameBel[
+                    sortingListBanks(item1.banks)[0]
+                  ]
+                }{" "}
               </Link>
               <img src={uk} alt="logo" className="logoHeader" />
             </li>
@@ -287,12 +322,6 @@ class FirstScreen extends Component {
   handleSetQntMnl = e => {
     this.props.state.handleSetQntST(e.currentTarget.value);
   };
-
-  // handleSetQnt = qnt => {
-  //   this.setState({
-  //     kolichestvoValuti: qnt
-  //   });
-  // };
 
   clickFlagFocusInput = e => {
     var setfcs = document.getElementById(e.currentTarget.dataset.value);
