@@ -34,7 +34,7 @@ class FirstScreen extends Component {
   vivodpari = item => {
     let size = {
       width: `${calculationPairRate(item, this.props.state).length * 14 ||
-        5 * 14}px`
+        4 * 14}px`
     };
 
     return (
@@ -359,21 +359,37 @@ class FirstScreen extends Component {
         </div>
         <div className="conteiner-flex">
           {coursesBanksArray.map(item => {
-            if (item.name !== "") {
-              if (
-                activeCurrencyCode === item.kodval &&
-                buyStatus === item.kodpara.split("_")[2]
-              ) {
-                return this.vivodpari(item);
-              }
+            return item.name !== "" &&
+              ((activeCurrencyCode === item.kodval &&
+                buyStatus === item.kodpara.split("_")[2]) ||
+                (activeCurrencyCode !== item.kodval &&
+                  buyStatus !== item.kodpara.split("_")[2]))
+              ? this.vivodpari(item)
+              : "";
 
-              if (
-                activeCurrencyCode !== item.kodval &&
-                buyStatus !== item.kodpara.split("_")[2]
-              ) {
-                return this.vivodpari(item);
-              }
-            }
+            // if (
+            //   activeCurrencyCode === item.kodval &&
+            //   buyStatus === item.kodpara.split("_")[2]
+            // ) {
+            //   return this.vivodpari(item);
+            // }
+
+            // if (
+            //   activeCurrencyCode !== item.kodval &&
+            //   buyStatus !== item.kodpara.split("_")[2]
+            // ) {
+            //   return this.vivodpari(item);
+            // }
+
+            // if (
+            //   item.name !== "" &&
+            //   ((activeCurrencyCode === item.kodval &&
+            //     buyStatus === item.kodpara.split("_")[2]) ||
+            //     (activeCurrencyCode !== item.kodval &&
+            //       buyStatus !== item.kodpara.split("_")[2]))
+            // ) {
+            //   return this.vivodpari(item);
+            // }
           })}
         </div>
       </div>

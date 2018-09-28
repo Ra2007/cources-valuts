@@ -1,53 +1,31 @@
 import React, { Component } from "react";
 
 import arrowLeft from "./arrowLeft.svg";
-import { YMaps, Map, Placemark } from "react-yandex-maps";
+import { YMaps, Map, GeoObject, Placemark } from "react-yandex-maps";
 import calculationPairRate from "./components/calculationPairRate";
 import sortingListBanks from "./components/sortingListBanks";
 import { Link } from "react-router-dom";
+import getCrdBankBuy from "./components/getCrdBankBuy";
 
 class SecondScreenBuy extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       valuta1: "",
       valuta2: "",
-      ontValSecScr: ""
+      ontValSecScr: "",
+      plotOnMap: [
+        { a: "53.926202", b: "27.618838" },
+        { a: "53.905955", b: "27.539185" },
+        { a: "53.909678", b: "27.57871" },
+        { a: "53.920592", b: "27.448149" },
+        { a: "53.911275", b: "27.45459" }
+      ]
     };
   }
-  componentDidMount = () => {
-    let valSecond = this.props.location.pathname
-      .split("/")[2]
-      .split("")
-      .splice(
-        this.props.location.pathname.split("/")[2].split("").length - 3,
-        3
-      )
-      .join("");
 
-    let valActive = this.props.location.pathname
-      .split("/")[2]
-      .split("")
-      .splice(
-        this.props.location.pathname.split("/")[2].split("").length - 7,
-        3
-      )
-      .join("");
-
-    let arrey = this.props.location.pathname.split("/")[2].split("");
-    arrey.splice(arrey.length - 7, 7);
-    let arrey2 = arrey.join("");
-
-    this.setState({
-      valuta1: valActive,
-      valuta2: valSecond,
-      ontValSecScr: arrey2
-    });
-
-    this.props.state.handleSetQntST(arrey2);
-    this.props.state.changeFilterST(valActive);
-  };
+  componentDidMount = () => {};
   handleFocus = event => {
     event.target.select();
   };
@@ -445,9 +423,9 @@ class SecondScreenBuy extends Component {
         </div>
         <section className="column2" id="conteiner-map">
           {screenWidth > 480
-            ? this.MyPlacemark(mapState)
+            ? this.myPlacemark(mapState)
             : propss.mapStatusScnScr
-              ? this.MyPlacemark(mapState)
+              ? this.myPlacemark(mapState)
               : ""}
         </section>
       </div>
@@ -475,27 +453,59 @@ class SecondScreenBuy extends Component {
     );
   };
 
-  MyPlacemark = mapState => (
-    <YMaps>
-      <Map state={mapState} width="100%" height="100%">
-        <Placemark
-          geometry={{
-            coordinates: [55.751574, 37.573856]
-          }}
-          properties={{
-            hintContent: "Собственный значок метки",
-            balloonContent: "Это красивая метка"
-          }}
-          options={{
-            iconLayout: "default#image",
-            iconImageHref: "images/myIcon.gif",
-            iconImageSize: [30, 42],
-            iconImageOffset: [-3, -42]
-          }}
-        />
-      </Map>
-    </YMaps>
-  );
+  myPlacemark = mapState => {
+    return (
+      <YMaps>
+        <Map state={mapState} width="100%" height="100%">
+          {/* <Placemark
+            geometry={{
+              coordinates: [55.751574, 37.573856]
+            }}
+            properties={{
+              hintContent: "Собственный значок метки",
+              balloonContent: "Это красивая метка"
+            }}
+            options={{
+              iconLayout: "default#image",
+              iconImageHref: arrowLeft,
+              iconImageSize: [30, 42],
+              iconImageOffset: [-3, -42]
+            }}
+          /> */}
+          {this.state.plotOnMap.map((coordin, i) => {
+            console.log(coordin);
+            let aa = +coordin.a;
+            let bb = +coordin.b;
+
+            return (
+              <GeoObject
+                key={i}
+                // The geometry description.
+
+                geometry={{
+                  type: "Point",
+                  coordinates: [aa, bb]
+                }}
+                properties={{
+                  // The placemark content.
+                  //iconContent: "Я тащусь",
+                  hintContent: `${coordin.c} <br />${coordin.d.split("к,")[1]}`
+                }}
+                // Options.
+                options={{
+                  // The placemark's icon will stretch to fit its contents.
+                  preset: "islands#blackStretchyIcon",
+                  // The placemark can be moved.
+                  draggable: true
+                }}
+              />
+            );
+          })}{" "}
+          />
+        </Map>
+      </YMaps>
+    );
+  };
 
   displayBanksSecondScreen = bank => {
     return sortingListBanks(bank).map(banki => {
@@ -511,18 +521,93 @@ class SecondScreenBuy extends Component {
 
           <ul>
             {bank.map(item => {
-              if (banki === item.split(":")[0])
-                return (
-                  <li key={item.split(":")[2]}>
-                    {item.split(":")[4].split("к,")[1]}
-                  </li>
-                );
+              return banki === item.split(":")[0] ? (
+                <li key={item.split(":")[2]}>
+                  {item.split(":")[4].split("к,")[1]}
+                </li>
+              ) : (
+                ""
+              );
             })}
           </ul>
         </li>
       );
     });
   };
+
+  componentWillMount() {
+    let valSecond = this.props.location.pathname
+      .split("/")[2]
+      .split("")
+      .splice(
+        this.props.location.pathname.split("/")[2].split("").length - 3,
+        3
+      )
+      .join("");
+
+    let valActive = this.props.location.pathname
+      .split("/")[2]
+      .split("")
+      .splice(
+        this.props.location.pathname.split("/")[2].split("").length - 7,
+        3
+      )
+      .join("");
+
+    let arrey = this.props.location.pathname.split("/")[2].split("");
+    arrey.splice(arrey.length - 7, 7);
+    let arrey2 = arrey.join("");
+
+    this.setState({
+      valuta1: valActive,
+      valuta2: valSecond,
+      ontValSecScr: arrey2
+    });
+
+    this.props.state.handleSetQntST(arrey2);
+    this.props.state.changeFilterST(valActive);
+
+    let msvCrd = [];
+
+    getCrdBankBuy(valActive, valSecond, this.props.state).banks.map(adr => {
+      return fetch(
+        `https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${
+          adr.split(":")[4]
+        }`,
+        {
+          metod: "GET"
+        }
+      )
+        .then(result => result.json())
+        .then(data => {
+          msvCrd.push({
+            a: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
+              " "
+            )[1],
+            b: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
+              " "
+            )[0],
+            c: adr.split(":")[1],
+            d: adr.split(":")[4]
+          });
+          this.setState({
+            plotOnMap: msvCrd
+          });
+        });
+    });
+
+    // getCrdBank(this.props.state.coursesBanksArray[10].banks, function(
+    //   err,
+    //   res
+    // ) {
+    //   console.log("1", res);
+    // });
+
+    this.setState({
+      plotOnMap: msvCrd
+    });
+    console.log(this.state.plotOnMap);
+  }
 
   render() {
     return <div>{this.secondScreenBuy()}</div>;

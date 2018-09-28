@@ -17,7 +17,7 @@ class App extends Component {
       activeCurrencyCode: "byn",
       amountCurrency: 2.058,
       activPriceBuy: 1,
-      buyStatus: "buy",
+      buyStatus: "sell",
       viewBankList: false,
       activePareBanks: "eur_byn_buy",
       coursesBanksArray: dataApi,
@@ -35,7 +35,7 @@ class App extends Component {
       handleActiveParBanksST: para => this.handleActiveParBanks(para)
     };
 
-    this.state.amountCurrency = this.state.coursesBanksArray[3].price.toFixed(
+    this.state.amountCurrency = this.state.coursesBanksArray[2].price.toFixed(
       2
     );
 
