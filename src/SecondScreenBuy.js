@@ -568,7 +568,7 @@ class SecondScreenBuy extends Component {
     this.props.state.changeFilterST(valActive);
 
     let msvCrd = [];
-
+    console.log(valActive, valSecond);
     getCrdBankBuy(valActive, valSecond, this.props.state).banks.map(adr => {
       return fetch(
         `https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${

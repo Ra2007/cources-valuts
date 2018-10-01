@@ -30,7 +30,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "usd":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[3];
         case "eur":
@@ -43,7 +43,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "eur":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[5];
         case "usd":
@@ -56,7 +56,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "gbp":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[7];
 
@@ -65,7 +65,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "chf":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[9];
 
@@ -74,7 +74,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "rub":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[11];
         case "usd":
@@ -87,7 +87,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "uah":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[13];
 
@@ -96,7 +96,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "pln":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[15];
 
@@ -105,7 +105,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "czk":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[17];
 
@@ -114,7 +114,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "kzt":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[19];
 
@@ -123,7 +123,7 @@ const getCrdBankSell = (val1, val2, props) => {
       break;
 
     case "cny":
-      switch (this.state.valuta2) {
+      switch (val2) {
         case "byn":
           return props.coursesBanksArray[21];
 
