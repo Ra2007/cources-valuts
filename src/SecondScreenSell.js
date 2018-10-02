@@ -527,7 +527,6 @@ class SecondScreenSell extends Component {
               />
             );
           })}{" "}
-          />
         </Map>
       </YMaps>
     );

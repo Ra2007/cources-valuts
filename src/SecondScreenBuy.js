@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 import getCrdBankBuy from "./components/getCrdBankBuy";
 
 class SecondScreenBuy extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       valuta1: "",
@@ -501,7 +501,6 @@ class SecondScreenBuy extends Component {
               />
             );
           })}{" "}
-          />
         </Map>
       </YMaps>
     );
