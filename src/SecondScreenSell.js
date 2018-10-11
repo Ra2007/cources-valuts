@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import arrowLeft from "./arrowLeft.svg";
-import { YMaps, Map, GeoObject, Placemark } from "react-yandex-maps";
+import { YMaps, Map, GeoObject } from "react-yandex-maps";
 import calculationPairRate from "./components/calculationPairRate";
 import sortingListBanks from "./components/sortingListBanks";
 import { Link } from "react-router-dom";
@@ -24,34 +24,7 @@ class SecondScreenSell extends Component {
       ]
     };
   }
-  componentDidMount = () => {
-    // let valSecond = this.props.location.pathname
-    //   .split("/")[2]
-    //   .split("")
-    //   .splice(
-    //     this.props.location.pathname.split("/")[2].split("").length - 3,
-    //     3
-    //   )
-    //   .join("");
-    // let valActive = this.props.location.pathname
-    //   .split("/")[2]
-    //   .split("")
-    //   .splice(
-    //     this.props.location.pathname.split("/")[2].split("").length - 7,
-    //     3
-    //   )
-    //   .join("");
-    // let arrey = this.props.location.pathname.split("/")[2].split("");
-    // arrey.splice(arrey.length - 7, 7);
-    // let arrey2 = arrey.join("");
-    // this.setState({
-    //   valuta1: valActive,
-    //   valuta2: valSecond,
-    //   ontValSecScr: arrey2
-    // });
-    // this.props.state.handleSetQntST(arrey2);
-    // this.props.state.changeFilterST(valActive);
-  };
+  componentDidMount = () => {};
   handleFocus = event => {
     event.target.select();
   };
@@ -352,10 +325,7 @@ class SecondScreenSell extends Component {
               </Link>
             </div>
             <div className="text-second">
-              Дзе абмяняць{" "}
-              {/* {this.props.state.buyStatus === "buy" ? "набыць" : "абмяняць"}{" "} */}
-              {this.props.state.secondScreenCNActiv[valuta1]} на{" "}
-              {/* {this.props.state.buyStatus === "buy" ? "за" : "на"}{" "} */}
+              Дзе абмяняць {this.props.state.secondScreenCNActiv[valuta1]} на{" "}
               {this.props.state.secondScreenCNActiv[valuta2]} па лепшым курсе
             </div>
             <div className="conteiner-second">
@@ -483,45 +453,23 @@ class SecondScreenSell extends Component {
     return (
       <YMaps>
         <Map state={mapState} width="100%" height="100%">
-          {/* <Placemark
-            geometry={{
-              coordinates: [55.751574, 37.573856]
-            }}
-            properties={{
-              hintContent: "Собственный значок метки",
-              balloonContent: "Это красивая метка"
-            }}
-            options={{
-              iconLayout: "default#image",
-              iconImageHref: arrowLeft,
-              iconImageSize: [30, 42],
-              iconImageOffset: [-3, -42]
-            }}
-          /> */}
           {this.state.plotOnMap.map((coordin, i) => {
-            console.log(coordin);
             let aa = +coordin.a;
             let bb = +coordin.b;
 
             return (
               <GeoObject
                 key={i}
-                // The geometry description.
-
                 geometry={{
                   type: "Point",
                   coordinates: [aa, bb]
                 }}
                 properties={{
-                  // The placemark content.
-                  //iconContent: "Я тащусь",
                   hintContent: `${coordin.c} <br />${coordin.d.split("к,")[1]}`
                 }}
-                // Options.
                 options={{
-                  // The placemark's icon will stretch to fit its contents.
                   preset: "islands#blackStretchyIcon",
-                  // The placemark can be moved.
+
                   draggable: true
                 }}
               />
@@ -533,7 +481,6 @@ class SecondScreenSell extends Component {
   };
 
   displayBanksSecondScreen = bank => {
-    console.log(bank);
     return sortingListBanks(bank).map(banki => {
       return (
         <li key={banki}>
@@ -622,17 +569,9 @@ class SecondScreenSell extends Component {
         });
     });
 
-    // getCrdBank(this.props.state.coursesBanksArray[10].banks, function(
-    //   err,
-    //   res
-    // ) {
-    //   console.log("1", res);
-    // });
-
     this.setState({
       plotOnMap: msvCrd
     });
-    console.log(this.state.plotOnMap);
   }
 
   render() {

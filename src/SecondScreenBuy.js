@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import arrowLeft from "./arrowLeft.svg";
-import { YMaps, Map, GeoObject, Placemark } from "react-yandex-maps";
+import { YMaps, Map, GeoObject } from "react-yandex-maps";
 import calculationPairRate from "./components/calculationPairRate";
 import sortingListBanks from "./components/sortingListBanks";
 import { Link } from "react-router-dom";
@@ -326,10 +326,7 @@ class SecondScreenBuy extends Component {
               </Link>
             </div>
             <div className="text-second">
-              Дзе набыць{" "}
-              {/* {this.props.state.buyStatus === "buy" ? "набыць" : "абмяняць"}{" "} */}
-              {this.props.state.secondScreenCNActiv[valuta1]} за{" "}
-              {/* {this.props.state.buyStatus === "buy" ? "за" : "на"}{" "} */}
+              Дзе набыць {this.props.state.secondScreenCNActiv[valuta1]} за{" "}
               {this.props.state.secondScreenCNActiv[valuta2]} па лепшым курсе
             </div>
             <div className="conteiner-second">
@@ -457,45 +454,23 @@ class SecondScreenBuy extends Component {
     return (
       <YMaps>
         <Map state={mapState} width="100%" height="100%">
-          {/* <Placemark
-            geometry={{
-              coordinates: [55.751574, 37.573856]
-            }}
-            properties={{
-              hintContent: "Собственный значок метки",
-              balloonContent: "Это красивая метка"
-            }}
-            options={{
-              iconLayout: "default#image",
-              iconImageHref: arrowLeft,
-              iconImageSize: [30, 42],
-              iconImageOffset: [-3, -42]
-            }}
-          /> */}
           {this.state.plotOnMap.map((coordin, i) => {
-            console.log(coordin);
             let aa = +coordin.a;
             let bb = +coordin.b;
 
             return (
               <GeoObject
                 key={i}
-                // The geometry description.
-
                 geometry={{
                   type: "Point",
                   coordinates: [aa, bb]
                 }}
                 properties={{
-                  // The placemark content.
-                  //iconContent: "Я тащусь",
                   hintContent: `${coordin.c} <br />${coordin.d.split("к,")[1]}`
                 }}
-                // Options.
                 options={{
-                  // The placemark's icon will stretch to fit its contents.
                   preset: "islands#blackStretchyIcon",
-                  // The placemark can be moved.
+
                   draggable: true
                 }}
               />
@@ -567,7 +542,7 @@ class SecondScreenBuy extends Component {
     this.props.state.changeFilterST(valActive);
 
     let msvCrd = [];
-    console.log(valActive, valSecond);
+
     getCrdBankBuy(valActive, valSecond, this.props.state).banks.map(adr => {
       return fetch(
         `https://geocode-maps.yandex.ru/1.x/?format=json&geocode=${
@@ -579,33 +554,32 @@ class SecondScreenBuy extends Component {
       )
         .then(result => result.json())
         .then(data => {
-          msvCrd.push({
-            a: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
-              " "
-            )[1],
-            b: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
-              " "
-            )[0],
-            c: adr.split(":")[1],
-            d: adr.split(":")[4]
-          });
+          if (
+            data.response.GeoObjectCollection.featureMember[0].GeoObject.Point
+              .pos
+          ) {
+            msvCrd.push({
+              a: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
+                " "
+              )[1],
+              b: data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(
+                " "
+              )[0],
+              c: adr.split(":")[1],
+              d: adr.split(":")[4]
+            });
+          }
+
           this.setState({
             plotOnMap: msvCrd
           });
-        });
+        })
+        .catch(err => console.log(err));
     });
-
-    // getCrdBank(this.props.state.coursesBanksArray[10].banks, function(
-    //   err,
-    //   res
-    // ) {
-    //   console.log("1", res);
-    // });
 
     this.setState({
       plotOnMap: msvCrd
     });
-    console.log(this.state.plotOnMap);
   }
 
   render() {

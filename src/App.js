@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import { Switch, Route } from "react-router-dom";
-import { dataApi } from "./data/dataAppp";
 import { firstScreenCN } from "./data/firstScreenСurrencyName";
 import { secondScreenCNActiv } from "./data/secondScreenСurrencyNameActive";
 import { banksNameBel } from "./data/banksNameBel";
@@ -20,7 +19,7 @@ class App extends Component {
       buyStatus: "sell",
       viewBankList: false,
       activePareBanks: "eur_byn_buy",
-      coursesBanksArray: dataApi,
+      coursesBanksArray: window.dataValut,
       firstScreenCN: firstScreenCN,
       secondScreenCNActiv: secondScreenCNActiv,
       banksNameBel: banksNameBel,
@@ -34,12 +33,11 @@ class App extends Component {
       changeToggleST: ClsBtn => this.changeToggle(ClsBtn),
       handleActiveParBanksST: para => this.handleActiveParBanks(para)
     };
+    console.log(this.state);
 
     this.state.amountCurrency = this.state.coursesBanksArray[2].price.toFixed(
       2
     );
-
-    // this.state.activPriceBuy = this.state.coursesBanksArray[3].price;
   }
 
   handleActivPrice = price => {

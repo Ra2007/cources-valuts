@@ -7,13 +7,6 @@ import sortingListBanks from "./components/sortingListBanks";
 import uk from "./picture.svg";
 
 class FirstScreen extends Component {
-  // constructor() {
-  //   super();
-  //   this.props.state.amountCurrency =
-  //     this.props.state.buyStatus == "buy"
-  //       ? this.props.state.coursesBanksArray[3].price
-  //       : this.props.state.coursesBanksArray[2].price;
-  // }
   handleFocus = event => {
     event.target.select();
   };
@@ -366,31 +359,9 @@ class FirstScreen extends Component {
                   buyStatus !== item.kodpara.split("_")[2]))
               ? this.vivodpari(item)
               : "";
-
-            // if (
-            //   activeCurrencyCode === item.kodval &&
-            //   buyStatus === item.kodpara.split("_")[2]
-            // ) {
-            //   return this.vivodpari(item);
-            // }
-
-            // if (
-            //   activeCurrencyCode !== item.kodval &&
-            //   buyStatus !== item.kodpara.split("_")[2]
-            // ) {
-            //   return this.vivodpari(item);
-            // }
-
-            // if (
-            //   item.name !== "" &&
-            //   ((activeCurrencyCode === item.kodval &&
-            //     buyStatus === item.kodpara.split("_")[2]) ||
-            //     (activeCurrencyCode !== item.kodval &&
-            //       buyStatus !== item.kodpara.split("_")[2]))
-            // ) {
-            //   return this.vivodpari(item);
-            // }
           })}
+
+          <br />
         </div>
       </div>
     );
