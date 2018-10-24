@@ -14,12 +14,12 @@ class App extends Component {
     super();
     this.state = {
       activeCurrencyCode: "byn",
-      amountCurrency: 2.058,
+      amountCurrency: 0,
       activPriceBuy: 1,
       buyStatus: "sell",
       viewBankList: false,
       activePareBanks: "eur_byn_buy",
-      coursesBanksArray: window.dataValut,
+      coursesBanksArray: [],
       firstScreenCN: firstScreenCN,
       secondScreenCNActiv: secondScreenCNActiv,
       banksNameBel: banksNameBel,
@@ -31,13 +31,9 @@ class App extends Component {
       handleSetQntST: qnt => this.handleSetQnt(qnt),
       changeFilterST: filter => this.changeFilter(filter),
       changeToggleST: ClsBtn => this.changeToggle(ClsBtn),
-      handleActiveParBanksST: para => this.handleActiveParBanks(para)
+      handleActiveParBanksST: para => this.handleActiveParBanks(para),
+      loaded: false
     };
-    console.log(this.state);
-
-    this.state.amountCurrency = this.state.coursesBanksArray[2].price.toFixed(
-      2
-    );
   }
 
   handleActivPrice = price => {
@@ -94,8 +90,32 @@ class App extends Component {
     }
   };
 
+  getCourceServer = async () => {
+    fetch("http://178.172.244.128:5003/get_cources", {
+      method: "POST",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded"
+      },
+
+      mode: "cors"
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          amountCurrency: data[2].price.toFixed(2),
+          coursesBanksArray: data,
+          loaded: true
+        });
+      })
+      .catch(error => console.log("BAD", error));
+  };
+
+  async componentDidMount() {
+    await this.getCourceServer();
+  }
+
   render() {
-    return (
+    return this.state.loaded ? (
       <Switch>
         <Route
           exact
@@ -111,7 +131,7 @@ class App extends Component {
           render={props => <SecondScreenSell {...props} state={this.state} />}
         />
       </Switch>
-    );
+    ) : null;
   }
 }
 export default App;
